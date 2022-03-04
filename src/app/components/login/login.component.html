@@ -1,0 +1,23 @@
+<div class="login">
+    <div class="card">
+        <div class="card-body">
+            <form [formGroup]="loginform" class="form-signin">
+                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+                <label for="inputlogin" class="sr-only">Login </label>
+                <input type="text" id="inputLogin" class="form-control" placeholder="Login" name="email" formControlName="email" ngModel required autofocus>
+
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="pwd" class="form-control" name="password" placeholder="Password" formControlName="password" ngModel
+                    required>
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login()">Sign in</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
