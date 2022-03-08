@@ -17,41 +17,56 @@ export class LoginComponent implements OnInit {
   loginform!: FormGroup;
   submitted = false;
   loading = false;
-  LoginObj: Loginpage={};
-  constructor(private fb: FormBuilder, private authentication: AuthenticationService,private router: Router) { }
+  LoginObj: Loginpage = {
+  };
+  constructor(private fb: FormBuilder, private authentication: AuthenticationService, private router: Router) { }
 
   ngOnInit(): void {
     this.loginform = this.fb.group({
       username: [''],
       password: ['']
     })
+    // this.title = JSON.parse(localStorage.getItem('Token')!);;
 
 
   }
-  login() {
+
+  // title !:string;
+  //  Authorization!:string;
+  login(data: any) {
     this.submitted = true;
-    this.LoginObj.username = this.loginform.value.username;
-    this.LoginObj.password = this.loginform.value.password;
-    if (this.loginform.invalid) {
-      return;
-  }
-    this.authentication.postLogin(this.LoginObj).subscribe({
-      next: (data) => {
-        console.log(data);
+    // this.title="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiI2MjI1Yzg4Y2Y0ZDZmMjA4NjQxMmJkYTciLCJ1c2VySWQiOjEsImlhdCI6MTY0NjY0MzM0MCwiZXhwIjoxNjQ2NzI5NzQwfQ.eKWCc3-P4T9vP-LDhRp6-G9ixXErqAEqWVN58iYRBio"
+    // localStorage.setItem("Authorization",this.title)
+
+    const Object = {
+      username: data.value.username,
+      password: data.value.password
+    }
+
+    //   if (this.loginform.invalid) {
+    //     return;
+    // }
+    this.authentication.postLogin(Object).subscribe(
+      (res: any) => {
+        console.log(res);
+        localStorage.setItem('Authorization', 'Bearer ' + res.data.token)
+
+        // if (res.message == "Login Success") {
+          alert("login successfully")
+          this.router.navigate(['/employee-list']);
+
+        // }
+
+        // else {
+        //   alert("no data found")
+        // }
 
       },
-      error: (err) => {
+      (err) => {
         console.log(err);
         alert("error")
-      },
-      complete: () => {
-        console.log("complete");
-        alert("Login successful");
-        this.router.navigate(['/employee-list']);
-      }
 
-    })
+      })
 
-   
   }
 }

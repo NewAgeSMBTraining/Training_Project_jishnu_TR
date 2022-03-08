@@ -1,20 +1,61 @@
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Employee Name </th>
-        <th scope="col">Employee Email</th>
-        <th scope="col">Mobile</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of userData">
-        <th scope="row">1</th>
-        
-        <td>{{user.employeeName}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.mobile}}</td>
-      </tr>
-     
-    </tbody>
-  </table>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <footer class="bg-white">
+
+    <div class="jumbotron">
+      <div class="container text-center">
+        <h1>User List</h1>
+      </div>
+
+    </div>
+
+    <div class="container">
+      <div class="container-fluid">
+
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Employee Name </th>
+              <th scope="col">Employee Email</th>
+              <th scope="col">Mobile</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of userData">
+              <th scope="row">1</th>
+
+              <td>{{user.full_name}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.phone}}</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <hr class="p-0 m-0 b-0">
+    <div class="bg-light py-2">
+      <div class="container text-center">
+        <p class="text-muted mb-0 py-2">© 2019 All risghts reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

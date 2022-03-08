@@ -1,183 +1,240 @@
-<div class=" card-boddy mt-0">
-    <div class="card--header">
-        <!-- <button class="btn btn-warning float-right"><i class="fa fa-arrow-circle-left"></i></button> -->
-        <div class="d-flex">
-            <!-- <p class="card--title">User Registration Details</p> -->
-            <h1 class="h3 mb-3 font-weight-normal">User Registration Details</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <footer class="bg-white">
+
+        <div class="jumbotron">
+            <div class="container text-center">
+                <h1>User Registration Details</h1>
+            </div>
+
         </div>
 
-    </div>
-    <form [formGroup]="userdetailsForm">
-        <div class="p-1rem">
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="mt-3 form-group"> <label for="usr" class="form-label-custom">Employee Name <span
-                                class="required-star">*</span></label> <input type="text" placeholder=""
-                            class="form-control" id="ct" formControlName="employeeName" placeholder="" id="other">
-                    </div>
-                    <div></div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="mt-3 form-group">
+        <div class="container">
+            <div class="container-fluid">
 
-                        <label for="dob" class="form-label-custom">Employee Email <span
-                                class="required-star">*</span><span class="required-star"></span></label> <input
-                            type="text" class="form-control" id="qw" formControlName="email">
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="mt-3 form-group">
-                        <label for="usr" class=" form-label-custom">Designation <span
-                                class="required-star">*</span></label> <input type="text" placeholder=""
-                            class="form-control" id="we" formControlName="designation">
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Grade<span
-                                class="required-star">*</span></label>
-                        <input type="text" placeholder="" class="form-control" id="er" formControlName="grade">
+                <div class=" card-boddy mt-0">
+                    <div class="card--header">
+                        <!-- <div class="d-flex">
+                            <h1 class="h3 mb-3 font-weight-normal">User Registration Details</h1>
+                        </div> -->
 
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Division
-                            <span class="required-star">*</span></label> <input type="text" placeholder=""
-                            class="form-control" id="rt" formControlName="division">
+                    <form [formGroup]="userdetailsForm">
+                        <div class="p-1rem">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="mt-3 form-group"> <label for="usr" class="form-label-custom">Employee
+                                            Name <span class="required-star">*</span></label> <input type="text"
+                                            placeholder="" class="form-control" id="ct" formControlName="employeeName"
+                                            placeholder="" id="other">
+                                    </div>
+                                    <div></div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="mt-3 form-group">
 
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Password
-                            <span class="required-star">*</span></label> <input type="password" placeholder=""
-                            class="form-control" id="ty" formControlName="password">
+                                        <label for="dob" class="form-label-custom">Employee Email <span
+                                                class="required-star">*</span><span
+                                                class="required-star"></span></label> <input type="text"
+                                            class="form-control" id="qw" formControlName="email">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="mt-3 form-group">
+                                        <label for="usr" class=" form-label-custom">Designation <span
+                                                class="required-star">*</span></label> <input type="text" placeholder=""
+                                            class="form-control" id="we" formControlName="designation">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Grade<span
+                                                class="required-star">*</span></label>
+                                        <input type="text" placeholder="" class="form-control" id="er"
+                                            formControlName="grade">
 
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Middle Name
-                            <span class="required-star">*</span></label> <input type="text" placeholder=""
-                            class="form-control" id="yu" formControlName="middleName">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Division
+                                            <span class="required-star">*</span></label> <input type="text"
+                                            placeholder="" class="form-control" id="rt" formControlName="division">
 
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Last Name
-                            <span class="required-star">*</span></label> <input type="text" placeholder=""
-                            class="form-control" id="ui" formControlName="lastName">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Password
+                                            <span class="required-star">*</span></label> <input type="password"
+                                            placeholder="" class="form-control" id="ty" formControlName="password">
 
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Telephone
-                            <span class="required-star">*</span></label> <input type="text" placeholder=""
-                            class="form-control" id="io" formControlName="telephone">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Middle
+                                            Name
+                                            <span class="required-star">*</span></label> <input type="text"
+                                            placeholder="" class="form-control" id="yu" formControlName="middleName">
 
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Mobile
-                            <span class="required-star">*</span></label> <input type="text" placeholder=""
-                            class="form-control" id="op" formControlName="mobile">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Last Name
+                                            <span class="required-star">*</span></label> <input type="text"
+                                            placeholder="" class="form-control" id="ui" formControlName="lastName">
 
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Emergency Contact
-                            <span class="required-star">*</span></label> <input type="text" placeholder=""
-                            class="form-control" id="pa" formControlName="emergencyContact">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Telephone
+                                            <span class="required-star">*</span></label> <input type="text"
+                                            placeholder="" class="form-control" id="io" formControlName="telephone">
 
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Martial Status
-                            <span class="required-star">*</span></label> <input type="text" placeholder=""
-                            class="form-control" id="as" formControlName="maritalStatus">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Mobile
+                                            <span class="required-star">*</span></label> <input type="text"
+                                            placeholder="" class="form-control" id="op" formControlName="mobile">
 
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Date Of Birth
-                            <span class="required-star">*</span></label> <input type="datetime-local" placeholder=""
-                            class="form-control" id="sd" formControlName="DOB">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Emergency
+                                            Contact
+                                            <span class="required-star">*</span></label> <input type="text"
+                                            placeholder="" class="form-control" id="pa"
+                                            formControlName="emergencyContact">
 
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Nationality
-                            <span class="required-star">*</span></label> <input type="text" placeholder=""
-                            class="form-control" id="df" formControlName="nationality">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Martial
+                                            Status
+                                            <span class="required-star">*</span></label> <input type="text"
+                                            placeholder="" class="form-control" id="as" formControlName="maritalStatus">
 
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Religion
-                            <span class="required-star">*</span></label> <input type="text" placeholder=""
-                            class="form-control" id="fg" formControlName="religion">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Date Of
+                                            Birth
+                                            <span class="required-star">*</span></label> <input type="datetime-local"
+                                            placeholder="" class="form-control" id="sd" formControlName="DOB">
 
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Height
-                            <span class="required-star">*</span></label> <input type="text" placeholder=""
-                            class="form-control" id="gh" formControlName="height">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="mt-3 form-group"> <label for="usr"
+                                            class=" form-label-custom">Nationality
+                                            <span class="required-star">*</span></label> <input type="text"
+                                            placeholder="" class="form-control" id="df" formControlName="nationality">
 
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Weight
-                            <span class="required-star">*</span></label> <input type="text" placeholder=""
-                            class="form-control" id="hj" formControlName="weight">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Religion
+                                            <span class="required-star">*</span></label> <input type="text"
+                                            placeholder="" class="form-control" id="fg" formControlName="religion">
 
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Qualification
-                            <span class="required-star">*</span></label> <input type="text" placeholder=""
-                            class="form-control" id="jk" formControlName="Qualification">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Height
+                                            <span class="required-star">*</span></label> <input type="text"
+                                            placeholder="" class="form-control" id="gh" formControlName="height">
 
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Date of Joining
-                            <span class="required-star">*</span></label> <input type="datetime-local" placeholder=""
-                            class="form-control" id="kl" formControlName="dateOfJoining">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Weight
+                                            <span class="required-star">*</span></label> <input type="text"
+                                            placeholder="" class="form-control" id="hj" formControlName="weight">
 
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Valid Passport
-                            <span class="required-star">*</span></label> <input type="text" placeholder=""
-                            class="form-control" id="lz" formControlName="validPassport">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="mt-3 form-group"> <label for="usr"
+                                            class=" form-label-custom">Qualification
+                                            <span class="required-star">*</span></label> <input type="text"
+                                            placeholder="" class="form-control" id="jk" formControlName="Qualification">
 
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Passport Number
-                            <span class="required-star">*</span></label> <input type="text" placeholder=""
-                            class="form-control" id="zx" formControlName="passportNumber">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Date of
+                                            Joining
+                                            <span class="required-star">*</span></label> <input type="datetime-local"
+                                            placeholder="" class="form-control" id="kl" formControlName="dateOfJoining">
 
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Valid UpTo
-                            <span class="required-star">*</span></label> <input type="datetime-local" placeholder=""
-                            class="form-control" id="xc" formControlName="validUpto">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Valid
+                                            Passport
+                                            <span class="required-star">*</span></label> <input type="text"
+                                            placeholder="" class="form-control" id="lz" formControlName="validPassport">
 
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Role
-                            <span class="required-star">*</span></label> <input type="text" placeholder=""
-                            class="form-control" id="cv" formControlName="role_id">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Passport
+                                            Number
+                                            <span class="required-star">*</span></label> <input type="text"
+                                            placeholder="" class="form-control" id="zx"
+                                            formControlName="passportNumber">
 
-                    </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Valid UpTo
+                                            <span class="required-star">*</span></label> <input type="datetime-local"
+                                            placeholder="" class="form-control" id="xc" formControlName="validUpto">
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Role
+                                            <span class="required-star">*</span></label> <input type="text"
+                                            placeholder="" class="form-control" id="cv" formControlName="role_id">
+
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-light" type="submit" (click)="createUser()">Submit</button>
+
+
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                
-                    <button class="btn btn-lg btn-primary btn-block" type="submit"
-                        (click)="createUser()">Submit</button>
-                
+
+
+
 
             </div>
         </div>
-    </form>
-</div>
+
+        
+
+            <!-- <hr class="p-0 m-0 b-0"> -->
+            <div class="bg-light py-2">
+                <div class="container text-center">
+                    <p class="text-muted mb-0 py-2">© 2019 All risghts reserved.</p>
+                </div>
+            </div>
+        
+    </footer>
+
+</body>
+
+</html>
