@@ -1,6 +1,6 @@
 export class Loginpage {
-    email!: string;
-    password!: string;
+    username?: string;
+    password?: string;
 }
 
 export class UserDetailspage {

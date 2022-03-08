@@ -1,0 +1,20 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Employee Name </th>
+        <th scope="col">Employee Email</th>
+        <th scope="col">Mobile</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of userData">
+        <th scope="row">1</th>
+        
+        <td>{{user.employeeName}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.mobile}}</td>
+      </tr>
+     
+    </tbody>
+  </table>

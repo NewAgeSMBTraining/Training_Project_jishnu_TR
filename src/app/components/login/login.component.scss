@@ -11,5 +11,11 @@ button {
     margin-bottom: 2rem;
 }
 
+a.active {
+    color: white !important;
+    mat-icon {
+      color: white !important;
+    }
+  }
 
 
