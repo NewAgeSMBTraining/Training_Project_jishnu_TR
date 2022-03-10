@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import { Loginpage } from './model/models/Models.model';
+import { catchError, map } from 'rxjs/operators';
+import { forgotPassword, Loginpage, otpVerification } from './model/models/Models.model';
 import { jitOnlyGuardedExpression } from '@angular/compiler/src/render3/util';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -40,5 +41,42 @@ export class AuthenticationService {
         })))
 
   }
+
+  postForgotPassword(data: forgotPassword) {
+    return this.httpclient.post<any>("http://web.newagesme.com:3636/auth/password/forgot", data).pipe(map((res => {
+          return res
+        }),
+        catchError((error) => {
+          return throwError('Something went wrong!', error);
+        })
+      ));
+
+  }
+
+  postVerifyOTP(data: otpVerification) {
+    return this.httpclient.post<any>("http://web.newagesme.com:3636/auth/otp/verify", data).pipe(map((res => {
+          return res
+        }),
+        catchError((error) => {
+          return throwError('Something went wrong!', error);
+        })
+      ));
+
+  }
+
+  // validateOtp(enteredOtp: number, emailId: string) {
+  //   return this.httpclient.post<any>("http://web.newagesme.com:3636/auth/otp/verify", data).pipe(map((res => {
+  //         return res
+  //       }),
+  //       catchError((error) => {
+  //         return throwError('Something went wrong!', error);
+  //       })
+  //     ));
+
+  // }
+
+  
+  
+
 
 }

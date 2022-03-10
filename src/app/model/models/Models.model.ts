@@ -30,3 +30,15 @@ export class UserDetailspage {
     role_id!: string;
     
 }
+
+export class forgotPassword {
+    email?: string;
+    
+}
+
+
+export class otpVerification {
+    session_id?: string;
+    otp?: string;
+   
+}

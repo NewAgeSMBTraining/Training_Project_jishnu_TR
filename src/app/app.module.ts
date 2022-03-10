@@ -9,19 +9,27 @@ import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { RouterModule } from '@angular/router';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { OtpSentComponent } from './components/otp-sent/otp-sent.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     CreateUserComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    ForgotPasswordComponent,
+    OtpSentComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,HttpClientModule,ReactiveFormsModule,FormsModule,RouterModule
+    AppRoutingModule,HttpClientModule,ReactiveFormsModule,FormsModule,RouterModule, BrowserAnimationsModule
     
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [],
   bootstrap: [AppComponent]
 })
