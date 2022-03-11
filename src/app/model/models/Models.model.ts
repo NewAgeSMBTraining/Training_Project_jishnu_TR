@@ -42,3 +42,9 @@ export class otpVerification {
     otp?: string;
    
 }
+
+export class resetpassword {
+    session_id?: string;
+    password?: string;
+   
+}

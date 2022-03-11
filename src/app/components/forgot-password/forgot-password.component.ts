@@ -27,7 +27,9 @@ export class ForgotPasswordComponent implements OnInit {
     this.forgotpassform = this.fb.group({
       email: [''],
       session_id: [''],
-      otp: ['']
+      otp: [''],
+      password:[''],
+      cofirmpassword:['']
 
     })
   }
@@ -40,8 +42,6 @@ export class ForgotPasswordComponent implements OnInit {
 
     const Object = {
       email: data.value.email,
-
-
     }
 
     this.authentication.postForgotPassword(Object).subscribe(
@@ -50,7 +50,6 @@ export class ForgotPasswordComponent implements OnInit {
         this.getSessionId=res.data.session_id
         // localStorage.setItem("QWER",res.data.session_id)
         
-
         if (res.message == "OTP sent") {
           alert("OTP Send successfully")
 
@@ -76,22 +75,20 @@ export class ForgotPasswordComponent implements OnInit {
     const Object = {
       session_id: this.getSessionId,
       otp: data.value.otp
-
-
     }
     this.authentication.postVerifyOTP(Object).subscribe(
       (res) => {
         console.log("OTP VALUE", res)
         
 
-        if (res.session_id == this.getSessionId) {
-          alert("verified")
+        if (res.message == "OTP verified") {
+          alert("OTP verified Successfully")
           
 
         }
 
         else {
-          alert("please check email is correct or not")
+          alert("please check OTP is correct or not")
         }
 
       },
@@ -101,6 +98,38 @@ export class ForgotPasswordComponent implements OnInit {
       });
 
   }
+
+  resetPassword(data: any) {
+   
+  
+    const Object = {
+      session_id: this.getSessionId,
+      password: data.value.password
+    }
+    this.authentication.postResetPassword(Object).subscribe(
+      (res) => {
+        console.log("Result", res)
+        
+
+        if (res.message == "Password changed") {
+          alert("password updated Successfully")
+          
+
+        }
+
+        else {
+          alert("please check any errors")
+        }
+
+      },
+      (err) => {
+        console.log(err);
+        alert("error")
+      });
+
+  }
+
+
 
   
 }

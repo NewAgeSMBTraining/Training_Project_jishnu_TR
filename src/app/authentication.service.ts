@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
-import { forgotPassword, Loginpage, otpVerification } from './model/models/Models.model';
+import { forgotPassword, Loginpage, otpVerification, resetpassword } from './model/models/Models.model';
 import { jitOnlyGuardedExpression } from '@angular/compiler/src/render3/util';
 import { throwError } from 'rxjs';
 
@@ -64,16 +64,18 @@ export class AuthenticationService {
 
   }
 
-  // validateOtp(enteredOtp: number, emailId: string) {
-  //   return this.httpclient.post<any>("http://web.newagesme.com:3636/auth/otp/verify", data).pipe(map((res => {
-  //         return res
-  //       }),
-  //       catchError((error) => {
-  //         return throwError('Something went wrong!', error);
-  //       })
-  //     ));
+  postResetPassword(data: resetpassword) {
+    return this.httpclient.post<any>("http://web.newagesme.com:3636/auth/password/reset", data).pipe(map((res => {
+          return res
+        }),
+        catchError((error) => {
+          return throwError('Something went wrong!', error);
+        })
+      ));
 
-  // }
+  }
+
+  
 
   
   
