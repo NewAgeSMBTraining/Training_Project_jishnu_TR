@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/authentication.service';
 import { UserDetailspage } from 'src/app/model/models/Models.model';
 import { KeyPessValidations } from '../validations/keypress.validations';
@@ -15,7 +16,7 @@ export class EmployeeListComponent implements OnInit {
   // userdetailsForm!: FormGroup;
   submitted = false;
 
-  constructor(private fb: FormBuilder, private authentication: AuthenticationService,public keyPressValidations:KeyPessValidations) { }
+  constructor(private fb: FormBuilder, private authentication: AuthenticationService, private router: Router,public keyPressValidations:KeyPessValidations) { }
 
 
 
@@ -121,6 +122,11 @@ export class EmployeeListComponent implements OnInit {
     }, (err) => {
       alert("Error" + err)
     })
+  }
+
+  logoutUser(){
+    alert("signout successfully")
+    this.router.navigateByUrl('/login')
   }
 
 }
