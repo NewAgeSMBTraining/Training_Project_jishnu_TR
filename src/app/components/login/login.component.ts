@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/authentication.service';
 import { Loginpage } from 'src/app/model/models/Models.model';
@@ -23,13 +23,18 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginform = this.fb.group({
-      username: [''],
-      password: ['']
+      username: ['',[Validators.required,Validators.pattern('^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$')]],
+      password: ['',[Validators.required,Validators.pattern('^[A-Za-z0-9]{6,10}$')]]
     })
     // this.title = JSON.parse(localStorage.getItem('Token')!);;
 
 
   }
+
+  get formControls() {
+    return this.loginform.controls;
+  }
+
 
   // title !:string;
   //  Authorization!:string;

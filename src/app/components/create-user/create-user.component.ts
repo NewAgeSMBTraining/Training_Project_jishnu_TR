@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { UserDetailspage } from 'src/app/model/models/Models.model';
 import { AuthenticationService } from 'src/app/authentication.service';
+import { UserDetailspage } from 'src/app/model/models/Models.model';
 
 
 
@@ -11,65 +11,63 @@ import { AuthenticationService } from 'src/app/authentication.service';
   styleUrls: ['./create-user.component.scss']
 })
 export class CreateUserComponent implements OnInit {
-  userdetailsForm = new FormGroup({
-    employeeName: new FormControl("", [Validators.required]),
-    email: new FormControl("", [Validators.required]),
-    designation: new FormControl("", [Validators.required]),
-    grade: new FormControl("", [Validators.required]),
-    division: new FormControl("", [Validators.required]),
-    password: new FormControl("", [Validators.required]),
-    middleName: new FormControl("", [Validators.required]),
-    lastName: new FormControl("", [Validators.required]),
-    telephone: new FormControl("", [Validators.required]),
-    mobile: new FormControl("", [Validators.required]),
-    emergencyContact: new FormControl("", [Validators.required]),
-    maritalStatus: new FormControl("", [Validators.required]),
-    DOB: new FormControl("", [Validators.required]),
-    nationality: new FormControl("", [Validators.required]),
-    religion: new FormControl("", [Validators.required]),
-    height: new FormControl("", [Validators.required]),
-    weight: new FormControl("", [Validators.required]),
-    Qualification: new FormControl("", [Validators.required]),
-    dateOfJoining: new FormControl("", [Validators.required]),
-    validPassport: new FormControl("", [Validators.required]),
-    passportNumber: new FormControl("", [Validators.required]),
-    validUpto: new FormControl("", [Validators.required]),
-    role_id: new FormControl("", [Validators.required]),
+  userdetailsForm!: FormGroup;
 
-  })
-  userdetailsObj: UserDetailspage = new UserDetailspage;
-  submitted =false;
+  
+  submitted = false;
+
+  userdetailsObj: UserDetailspage = new UserDetailspage
 
   constructor(private fb: FormBuilder, private authentication: AuthenticationService) { }
 
   ngOnInit(): void {
 
+    // this.userdetailsForm = this.fb.group({
 
+    //   id: [0],
+    //   role_id: ['', [Validators.required]],
+    //   first_name: ['', [Validators.required]],
+    //   last_name: ['', [Validators.required]],
+    //   email: ['', [Validators.required]],
+    //   phone_code: ['', [Validators.required]],
+    //   phone: ['', [Validators.required]],
+    //   password: ['', [Validators.required]],
+    // },
+    // {
+
+    
+
+    // })
 
   }
 
+  get formControls() {
+    return this.userdetailsForm.controls;
+  }
 
-  // get f() { return this.userdetailsForm.controls; }
+  createUser(data: any) {
+    this.submitted = true;
+    
+    const Object = {
+      role_id: data.value.role_id,
+      first_name: data.value.first_name,
+      last_name: data.value.last_name,
+      email: data.value.email,
+      phone_code: data.value.phone_code,
+      phone: data.value.phone,
+      password: data.value.password,
+    }
 
-  createUser() {
-    this.submitted=true;
-    let userdetailsObj=this.userdetailsForm.value
-    this.authentication.postCreateUser(userdetailsObj).subscribe({
-      next: (data) => {
-        console.log(data);
-
-      },
-      error: (err) => {
-        console.log(err);
-        alert("error")
-      },
-      complete: () => {
-        console.log("complete");
-        alert("user registration successful");
+    this.authentication.postCreateUser(Object).subscribe((res: any) => {
+      console.log(res);
+      if (res.message == "Created") {
+        alert("Created New User Successfully")
       }
 
+    }, (err) => {
+      console.log(err);
+      alert("something went wrong")
     })
 
   }
-
 }

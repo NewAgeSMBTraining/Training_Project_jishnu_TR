@@ -5,22 +5,29 @@
                 <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 
                 <label for="inputlogin" class="sr-only">Login </label>
-                <input type="text" id="inputLogin" class="form-control" placeholder="Login" name="email" formControlName="username" ngModel required autofocus>
+                <input type="text" id="inputLogin" class="form-control" placeholder="Login" name="email"
+                    formControlName="username" ngModel required autofocus
+                    [ngClass]="{'is-invalid': submitted && this.loginform.controls.email.errors}">
+                <div *ngIf="submitted && formControls.email.errors?.required" class="text-danger">Email is required
+                </div>
+                <div *ngIf="submitted && formControls.email.errors?.pattern" class="text-danger">please enter valid
+                    email</div>
 
                 <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="pwd" class="form-control" name="password" placeholder="Password" formControlName="password" ngModel
-                    required>
-                <a [routerLink]="['/create-user']" routerLinkActive="active">New User ? Click to Register !</a>
+                <input type="password" id="pwd" class="form-control" name="password" placeholder="Password"
+                    formControlName="password" ngModel required [ngClass]="{'is-invalid': submitted && this.loginform.controls.password.errors}">
+                <div *ngIf="submitted && formControls.password.errors?.required" class="text-danger">Password is
+                    required</div>
+                <div *ngIf="submitted && formControls.password.errors?.pattern" class="text-danger">password contain
+                    atleast 6 and upto 10 characters</div>
+                    <a [routerLink]="['/forgot-password']" routerLinkActive="active">forgot Password ? Click here!</a>
 
-                <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login(loginform)">Sign in</button>
 
-                <a [routerLink]="['/forgot-password']" routerLinkActive="active">forgot Password ?</a>
+                <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login(loginform)">Sign
+                    in</button>
 
+                
             </form>
         </div>
     </div>
 </div>
-
-
-
-

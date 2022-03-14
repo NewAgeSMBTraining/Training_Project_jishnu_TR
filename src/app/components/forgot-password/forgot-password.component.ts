@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from 'src/app/authentication.service';
 import { forgotPassword } from 'src/app/model/models/Models.model';
+import { ConfirmedValidator } from '../confirmed.validator';
 
 @Component({
   selector: 'app-forgot-password',
@@ -12,8 +13,6 @@ import { forgotPassword } from 'src/app/model/models/Models.model';
 })
 export class ForgotPasswordComponent implements OnInit {
   forgotpassform!: FormGroup;
-  cardSwitch: boolean = true;
-  invalidOtpMsg: boolean = false;
   submitted = false;
   forgotObj: forgotPassword = {
   };
@@ -25,13 +24,20 @@ export class ForgotPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.forgotpassform = this.fb.group({
-      email: [''],
+      email: ['',[Validators.required,Validators.pattern('^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$')]],
       session_id: [''],
-      otp: [''],
-      password:[''],
-      cofirmpassword:['']
+      otp: ['',[Validators.required]],
+      password:['',[Validators.required,[Validators.required,Validators.pattern('^[A-Za-z0-9]{6,10}$')]]],
+      cofirmpassword:['',[Validators.required,Validators.required,Validators.pattern('^[A-Za-z0-9]{6,10}$')]]
+    },
+    {
+
+    Validator:ConfirmedValidator('password','cofirmpassword')
 
     })
+  }
+  saveform(){
+
   }
   get formControls() {
     return this.forgotpassform.controls;

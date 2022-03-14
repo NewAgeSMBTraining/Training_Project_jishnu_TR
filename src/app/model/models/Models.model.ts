@@ -5,29 +5,14 @@ export class Loginpage {
 }
 
 export class UserDetailspage {
-    employeeName!: string;
-    email!: string;
-    designation!: string;
-    grade!: string;
-    division!: string;
-    password!: string;
-    middleName!: string;
-    lastName!: string;
-    telephone!: string;
-    mobile!: string;
-    emergencyContact!: string;
-    maritalStatus!: string;
-    DOB!: string;
-    nationality!: string;
-    religion!: string;
-    height!: string;
-    weight!: string;
-    Qualification!: string;
-    dateOfJoining!: string;
-    validPassport!: string;
-    passportNumber!: string;
-    validUpto!: string;
-    role_id!: string;
+    id?: any;
+    role_id?: number;
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    phone_code?: string;
+    phone?: string;
+    password?: string;
     
 }
 

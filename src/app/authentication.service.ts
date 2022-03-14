@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
-import { forgotPassword, Loginpage, otpVerification, resetpassword } from './model/models/Models.model';
+import { forgotPassword, Loginpage, otpVerification, resetpassword, UserDetailspage } from './model/models/Models.model';
 import { jitOnlyGuardedExpression } from '@angular/compiler/src/render3/util';
 import { throwError } from 'rxjs';
 
@@ -16,6 +16,7 @@ export class AuthenticationService {
     "Authorization" : localStorage.getItem('Authorization') || ""
   })
   data!:Loginpage[];
+  
 
   constructor(private httpclient: HttpClient) { }
 
@@ -26,7 +27,7 @@ export class AuthenticationService {
 
   }
 
-  postCreateUser(data: any) {
+  postCreateUser(data: UserDetailspage) {
     return this.httpclient.post<any>("http://web.newagesme.com:3636/user", data,{ headers : this.header}).pipe(map((res => {
           return res
         })))
@@ -73,6 +74,25 @@ export class AuthenticationService {
         })
       ));
 
+  }
+
+  putEditUser(data: any, id: number) {
+
+    return this.httpclient.put<any>("http://web.newagesme.com:3636/user/" + id,data,{ 
+      headers:this.header 
+    }).pipe(
+      map(
+        (res) => {
+          return res
+        }))
+  }
+
+  deleteDeleteUser(id: number) {
+    return this.httpclient.delete<any>("http://web.newagesme.com:3636/user/"+id, {headers:this.header}).pipe(
+      map(
+        (res) => {
+          return res
+        }))
   }
 
   
