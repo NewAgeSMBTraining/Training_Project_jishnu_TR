@@ -68,9 +68,11 @@
 
                               <label for="dob" class="form-label-custom">Role Id<span
                                   class="required-star">*</span><span class="required-star"></span></label> <input
-                                type="number" min="1" max="2" class="form-control" id="qw" formControlName="role_id" [ngClass]="{'is-invalid': submitted && this.userdetailsForm.controls.role_id.errors}">
-                                <div *ngIf="submitted && formControls.role_id.errors?.required" class="text-danger">Role Id is
-                                  required</div>
+                                type="number" min="1" max="2" class="form-control" id="qw" formControlName="role_id"
+                                [ngClass]="{'is-invalid': submitted && this.userdetailsForm.controls.role_id.errors}">
+                              <div *ngIf="submitted && formControls.role_id.errors?.required" class="text-danger">Role
+                                Id is
+                                required</div>
                               <!-- <div *ngIf="submitted && formControls.role_id.errors?.maxlength" class="text-danger">* maximum 20
                                   digits</div>
                               <div *ngIf="submitted && formControls.role_id.errors?.pattern" class="text-danger">*unacceptable
@@ -81,18 +83,24 @@
                             <div class="mt-3 form-group">
                               <label for="usr" class=" form-label-custom">First Name <span
                                   class="required-star">*</span></label> <input type="text" placeholder=""
-                                class="form-control" id="we" formControlName="first_name" [ngClass]="{'is-invalid': submitted && this.userdetailsForm.controls.first_name.errors}" (keypress)="keyPressValidations.keyPressAlpha($event)">
-                                <div *ngIf="submitted && formControls.first_name.errors?.required" class="text-danger">First Name is required</div>
-                                <div *ngIf="submitted && formControls.first_name.errors?.pattern" class="text-danger">only alphabets</div>
+                                class="form-control" id="we" formControlName="first_name"
+                                [ngClass]="{'is-invalid': submitted && this.userdetailsForm.controls.first_name.errors}"
+                                (keypress)="keyPressValidations.keyPressAlpha($event)">
+                              <div *ngIf="submitted && formControls.first_name.errors?.required" class="text-danger">
+                                First Name is required</div>
+                              <div *ngIf="submitted && formControls.first_name.errors?.pattern" class="text-danger">only
+                                alphabets</div>
                             </div>
                           </div>
                           <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                             <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Last
                                 Name<span class="required-star">*</span></label>
-                              <input type="text" placeholder="" class="form-control" id="er"
-                                formControlName="last_name" [ngClass]="{'is-invalid': submitted && this.userdetailsForm.controls.last_name.errors}">
-                                <div *ngIf="submitted && formControls.last_name.errors?.required" class="text-danger">Last Name is required</div>
-                                <div *ngIf="submitted && formControls.last_name.errors?.pattern" class="text-danger">only alphabets</div>
+                              <input type="text" placeholder="" class="form-control" id="er" formControlName="last_name"
+                                [ngClass]="{'is-invalid': submitted && this.userdetailsForm.controls.last_name.errors}">
+                              <div *ngIf="submitted && formControls.last_name.errors?.required" class="text-danger">Last
+                                Name is required</div>
+                              <div *ngIf="submitted && formControls.last_name.errors?.pattern" class="text-danger">only
+                                alphabets</div>
 
                             </div>
                           </div>
@@ -100,37 +108,48 @@
                           <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                             <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Email
                                 <span class="required-star">*</span></label> <input type="text" placeholder=""
-                                class="form-control" id="rt" formControlName="email" [ngClass]="{'is-invalid': submitted && this.userdetailsForm.controls.email.errors}">
-                                <div *ngIf="submitted && formControls.email.errors?.required" class="text-danger">Email is required</div>
-                                <div *ngIf="submitted && formControls.email.errors?.pattern" class="text-danger">please enter valid email</div>
+                                class="form-control" id="rt" formControlName="email"
+                                [ngClass]="{'is-invalid': submitted && this.userdetailsForm.controls.email.errors}">
+                              <div *ngIf="submitted && formControls.email.errors?.required" class="text-danger">Email is
+                                required</div>
+                              <div *ngIf="submitted && formControls.email.errors?.pattern" class="text-danger">please
+                                enter valid email</div>
 
                             </div>
                           </div>
                           <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                            <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Country
-                                Code(eg:+1)
+                            <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Phone code(eg:+1)
                                 <span class="required-star">*</span></label> <input type="text" placeholder=""
-                                class="form-control" id="ty" formControlName="phone_code" [ngClass]="{'is-invalid': submitted && this.userdetailsForm.controls.phone_code.errors}">
-                                <div *ngIf="submitted && formControls.phone_code.errors?.required" class="text-danger">Phone code is required</div>
-                                <div *ngIf="submitted && formControls.phone_code.errors?.pattern" class="text-danger">please enter valid phone code</div>
+                                class="form-control" id="ty" formControlName="phone_code"
+                                [ngClass]="{'is-invalid': submitted && this.userdetailsForm.controls.phone_code.errors}">
+                              <div *ngIf="submitted && formControls.phone_code.errors?.required" class="text-danger">
+                                Phone code is required</div>
+                              <div *ngIf="submitted && formControls.phone_code.errors?.pattern" class="text-danger">
+                                please enter valid phone code</div>
 
                             </div>
                           </div>
                           <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                             <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Mobile
                                 <span class="required-star">*</span></label> <input type="text" placeholder=""
-                                class="form-control" id="yu" formControlName="phone" [ngClass]="{'is-invalid': submitted && this.userdetailsForm.controls.phone.errors}">
-                                <div *ngIf="submitted && formControls.phone.errors?.required" class="text-danger">Phone number is required</div>
-                                <div *ngIf="submitted && formControls.phone.errors?.pattern" class="text-danger">please enter valid phone number</div>
+                                class="form-control" id="yu" formControlName="phone"
+                                [ngClass]="{'is-invalid': submitted && this.userdetailsForm.controls.phone.errors}">
+                              <div *ngIf="submitted && formControls.phone.errors?.required" class="text-danger">Phone
+                                number is required</div>
+                              <div *ngIf="submitted && formControls.phone.errors?.pattern" class="text-danger">please
+                                enter valid phone number</div>
 
                             </div>
                           </div>
                           <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
                             <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Password
                                 <span class="required-star">*</span></label> <input type="password" placeholder=""
-                                class="form-control" id="ui" formControlName="password" [ngClass]="{'is-invalid': submitted && this.userdetailsForm.controls.password.errors}">
-                                <div *ngIf="submitted && formControls.password.errors?.required" class="text-danger">Password is required</div>
-                                <div *ngIf="submitted && formControls.password.errors?.pattern" class="text-danger">password contain atleast 6 and upto 10 characters</div>
+                                class="form-control" id="ui" formControlName="password"
+                                [ngClass]="{'is-invalid': submitted && this.userdetailsForm.controls.password.errors}">
+                              <div *ngIf="submitted && formControls.password.errors?.required" class="text-danger">
+                                Password is required</div>
+                              <div *ngIf="submitted && formControls.password.errors?.pattern" class="text-danger">
+                                password contain atleast 6 and upto 10 characters</div>
 
                             </div>
                           </div>
@@ -154,41 +173,71 @@
             </div>
 
 
+            <!-- modal update -->
+
+
             <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
               aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                  
+
                   <div class="modal-body">
                     <form [formGroup]="userdetailsForm">
-                     
-                      <div class="mb-3">
-                        <label>Role ID</label>
-                        <input class="form-control" type="number" placeholder="Enter role id" formControlName="role_id">
-                      </div>
-                      
+
+
+
                       <div class="mb-3">
                         <label>First name</label>
                         <input class="form-control" type="email" placeholder="Enter your first name"
-                          formControlName="first_name">
-                      </div>
-                     
-                      <div class="mb-3">
-                        <label>Last name</label>
-                        <input class="form-control" type="text" placeholder="Enter your last name"
-                          formControlName="last_name">
+                          formControlName="first_name"
+                          [ngClass]="{'is-invalid': submitted && this.userdetailsForm.controls.first_name.errors}">
+                        <div *ngIf="submitted && formControls.first_name.errors?.required" class="text-danger">First
+                          Name is required</div>
+                        <div *ngIf="submitted && formControls.first_name.errors?.pattern" class="text-danger">only
+                          alphabets</div>
                       </div>
 
                       <div class="mb-3">
-                        <label>Phone Code</label>
-                        <input class="form-control" type="text" placeholder="Enter phone code"
-                          formControlName="phone_code">
+                        <label>Last name</label>
+                        <input class="form-control" type="text" placeholder="Enter your last name"
+                          formControlName="last_name"
+                          [ngClass]="{'is-invalid': submitted && this.userdetailsForm.controls.last_name.errors}">
+                        <div *ngIf="submitted && formControls.last_name.errors?.required" class="text-danger">Last Name
+                          is required</div>
+                        <div *ngIf="submitted && formControls.last_name.errors?.pattern" class="text-danger">only
+                          alphabets</div>
+
                       </div>
-  
+
+                      <div class="mb-3">
+                        <label>Email</label>
+                        <input class="form-control" type="text" placeholder="Enter role email" formControlName="email"
+                          [ngClass]="{'is-invalid': submitted && this.userdetailsForm.controls.email.errors}">
+                        <div *ngIf="submitted && formControls.email.errors?.required" class="text-danger">Email is
+                          required</div>
+                        <div *ngIf="submitted && formControls.email.errors?.pattern" class="text-danger">please enter
+                          valid email</div>
+                      </div>
+
+                      <div class="mb-3">
+                        <label>Phone code</label>
+                        <input class="form-control" type="text" placeholder="Enter phone code"
+                          formControlName="phone_code"
+                          [ngClass]="{'is-invalid': submitted && this.userdetailsForm.controls.phone_code.errors}">
+                        <div *ngIf="submitted && formControls.phone_code.errors?.required" class="text-danger">Phone
+                          code is required</div>
+                        <div *ngIf="submitted && formControls.phone_code.errors?.pattern" class="text-danger">please
+                          enter valid phone code</div>
+                      </div>
+
                       <div class="mb-3">
                         <label>Phone number</label>
-                        <input class="form-control" type="text" placeholder="Enter phone number"
-                          formControlName="phone">
+                        <input class="form-control" type="text" placeholder="Enter phone number" formControlName="phone"
+                          [ngClass]="{'is-invalid': submitted && this.userdetailsForm.controls.phone.errors}">
+                        <div *ngIf="submitted && formControls.phone.errors?.required" class="text-danger">Phone number
+                          is required</div>
+                        <div *ngIf="submitted && formControls.phone.errors?.pattern" class="text-danger">please enter
+                          valid phone number</div>
                       </div>
 
 

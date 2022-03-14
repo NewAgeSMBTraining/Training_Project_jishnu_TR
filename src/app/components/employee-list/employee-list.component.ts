@@ -90,6 +90,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   updateUser() {
+    this.submitted = true;
 
     this.userdetailsObj.role_id = this.userdetailsForm.value.role_id;
     this.userdetailsObj.first_name = this.userdetailsForm.value.first_name;
