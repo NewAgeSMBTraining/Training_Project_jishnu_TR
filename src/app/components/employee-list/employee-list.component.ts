@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/authentication.service';
 import { UserDetailspage } from 'src/app/model/models/Models.model';
-import { KeyPessValidations } from '../validations/keypress.validations';
 
 @Component({
   selector: 'app-employee-list',
@@ -11,18 +10,25 @@ import { KeyPessValidations } from '../validations/keypress.validations';
   styleUrls: ['./employee-list.component.scss']
 })
 export class EmployeeListComponent implements OnInit {
-  userData:any=[];
+  userData:any[]=[];
   userdetailsObj: UserDetailspage = new UserDetailspage
   // userdetailsForm!: FormGroup;
   submitted = false;
+  searchValue! : string;
+  //  userData : user = []
+  first_name :any;
 
-  constructor(private fb: FormBuilder, private authentication: AuthenticationService, private router: Router,public keyPressValidations:KeyPessValidations) { }
 
+  constructor(private fb: FormBuilder, private authentication: AuthenticationService, private router: Router) { }
+  totalLength :any;
+  p:number=1;
+  
 
 
  
   ngOnInit(): void {
     this.getUser();
+   
   }
 
   userdetailsForm = this.fb.group({
@@ -42,6 +48,7 @@ export class EmployeeListComponent implements OnInit {
     this.authentication.getGetUser().subscribe(data=>{
       console.log(data)
       this.userData=data;
+      this.totalLength =data.length;
     })
 
   }
@@ -67,6 +74,8 @@ export class EmployeeListComponent implements OnInit {
       console.log(res);
       if (res.message == "Created") {
         alert("Created New User Successfully")
+        this.userdetailsForm.reset();
+        this.getUser();
       }
 
     }, (err) => {
@@ -127,6 +136,18 @@ export class EmployeeListComponent implements OnInit {
   logoutUser(){
     alert("signout successfully")
     this.router.navigateByUrl('/login')
+  }
+
+  search(){
+    if(this.first_name == "")
+    {
+      this.ngOnInit();
+    }
+    else{
+      this.userData = this.userData.filter((res : any)=>{
+        return res.first_name.toLocaleLowerCase().match(this.first_name.toLocaleLowerCase())
+      })
+    }
   }
 
 }

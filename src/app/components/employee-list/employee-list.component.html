@@ -25,13 +25,16 @@
                   <th scope="col">Employee Name </th>
                   <th scope="col">Employee Email</th>
                   <th scope="col">Mobile</th>
+                  <th >
+                    <input class="form-control" type="text" name="first_name" [(ngModel)]="first_name" placeholder="Name">
+                  </th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let user of userData">
+                <tr *ngFor="let user of userData | paginate :{itemsPerPage:5,currentPage:p,totalItems:totalLength} ">
                   <td>{{user.id}}</td>
                   <td>{{user.full_name}}</td>
-                  <td>{{user.email}}</td>
+                  <td>{{user.email}}</td> 
                   <td>{{user.phone}}</td>
 
                   <td> <button (click)="updateDetails(user)" style="margin: 5px;" type="button" class="btn btn-light"
@@ -42,10 +45,12 @@
                 </tr>
 
               </tbody>
+              
             </table>
 
             <!-- Button trigger modal -->
             <div class="text-center ">
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
               <button type="button" class="btn btn-light" style="margin: 5px;"  data-bs-toggle="modal" data-bs-target="#userCreation">
                 Add User
               </button>
@@ -88,7 +93,7 @@
                                   class="required-star">*</span></label> <input type="text" placeholder=""
                                 class="form-control" id="we" formControlName="first_name"
                                 [ngClass]="{'is-invalid': submitted && this.userdetailsForm.controls.first_name.errors}"
-                                (keypress)="keyPressValidations.keyPressAlpha($event)">
+                                >
                               <div *ngIf="submitted && formControls.first_name.errors?.required" class="text-danger">
                                 First Name is required</div>
                               <div *ngIf="submitted && formControls.first_name.errors?.pattern" class="text-danger">only

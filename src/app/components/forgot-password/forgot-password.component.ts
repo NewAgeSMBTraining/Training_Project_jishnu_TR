@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 import { AuthenticationService } from 'src/app/authentication.service';
 import { forgotPassword } from 'src/app/model/models/Models.model';
-import { ConfirmedValidator } from '../confirmed.validator';
+// import { ConfirmedValidator } from '../confirmed.validator';
 
 @Component({
   selector: 'app-forgot-password',
@@ -26,13 +26,13 @@ export class ForgotPasswordComponent implements OnInit {
     this.forgotpassform = this.fb.group({
       email: ['',[Validators.required,Validators.pattern('^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$')]],
       session_id: [''],
-      otp: ['',[Validators.required]],
-      password:['',[Validators.required,[Validators.required,Validators.pattern('^[A-Za-z0-9]{6,10}$')]]],
-      cofirmpassword:['',[Validators.required,Validators.required,Validators.pattern('^[A-Za-z0-9]{6,10}$')]]
+      // otp: ['',[Validators.required]],
+      // password:['',[Validators.required,[Validators.required,Validators.pattern('^[A-Za-z0-9]{6,10}$')]]],
+      // cofirmpassword:['',[Validators.required,Validators.required,Validators.pattern('^[A-Za-z0-9]{6,10}$')]]
     },
     {
 
-    Validator:ConfirmedValidator('password','cofirmpassword')
+    // Validator:ConfirmedValidator('password','cofirmpassword')
 
     })
   }
@@ -58,6 +58,7 @@ export class ForgotPasswordComponent implements OnInit {
         
         if (res.message == "OTP sent") {
           alert("OTP Send successfully")
+          this.router.navigate(['/otp-verification'],{state: {data : this.getSessionId}});
 
         }
 
@@ -75,65 +76,65 @@ export class ForgotPasswordComponent implements OnInit {
 
 
 
-  verifyOTP(data: any) {
+  // verifyOTP(data: any) {
    
   
-    const Object = {
-      session_id: this.getSessionId,
-      otp: data.value.otp
-    }
-    this.authentication.postVerifyOTP(Object).subscribe(
-      (res) => {
-        console.log("OTP VALUE", res)
+  //   const Object = {
+  //     session_id: this.getSessionId,
+  //     otp: data.value.otp
+  //   }
+  //   this.authentication.postVerifyOTP(Object).subscribe(
+  //     (res) => {
+  //       console.log("OTP VALUE", res)
         
 
-        if (res.message == "OTP verified") {
-          alert("OTP verified Successfully")
+  //       if (res.message == "OTP verified") {
+  //         alert("OTP verified Successfully")
           
 
-        }
+  //       }
 
-        else {
-          alert("please check OTP is correct or not")
-        }
+  //       else {
+  //         alert("please check OTP is correct or not")
+  //       }
 
-      },
-      (err) => {
-        console.log(err);
-        alert("error")
-      });
+  //     },
+  //     (err) => {
+  //       console.log(err);
+  //       alert("error")
+  //     });
 
-  }
+  // }
 
-  resetPassword(data: any) {
+  // resetPassword(data: any) {
    
   
-    const Object = {
-      session_id: this.getSessionId,
-      password: data.value.password
-    }
-    this.authentication.postResetPassword(Object).subscribe(
-      (res) => {
-        console.log("Result", res)
+  //   const Object = {
+  //     session_id: this.getSessionId,
+  //     password: data.value.password
+  //   }
+  //   this.authentication.postResetPassword(Object).subscribe(
+  //     (res) => {
+  //       console.log("Result", res)
         
 
-        if (res.message == "Password changed") {
-          alert("password updated Successfully")
+  //       if (res.message == "Password changed") {
+  //         alert("password updated Successfully")
           
 
-        }
+  //       }
 
-        else {
-          alert("please check any errors")
-        }
+  //       else {
+  //         alert("please check any errors")
+  //       }
 
-      },
-      (err) => {
-        console.log(err);
-        alert("error")
-      });
+  //     },
+  //     (err) => {
+  //       console.log(err);
+  //       alert("error")
+  //     });
 
-  }
+  // }
 
 
 

@@ -1,0 +1,39 @@
+<div class="container padding-bottom-3x mb-2 mt-5">
+    <form [formGroup]="otpVerifyform" class="form-signin">
+        <div class="jumbotron">
+            <div class="container text-center">
+                <h1>OTP Verification</h1>
+            </div>
+
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <div class="form-group"> <label for="email-for-pass">Enter OTP</label>
+                            <input type="text" class="form-control" formControlName="otp" id="email-for-pass"
+                                required="" [ngClass]="{'is-invalid': submitted && this.otpVerifyform.controls.otp.errors}">
+                                <div *ngIf="submitted && formControls.otp.errors?.required" class="text-danger">OTP is required
+                                </div>
+                                <!-- <div *ngIf="submitted && formControls.email.errors?.invalid" class="text-danger">please enter valid
+                                    otp</div> -->
+
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-lg btn-primary btn-block" [routerLink]="['/login']" routerLinkActive="active" type="submit"
+                            data-bs-dismiss="modal">Back to Login</button>
+                        <button class="btn btn-lg btn-primary btn-block" style="margin: 10px;" type="submit" data-bs-toggle="modal"
+                            data-bs-target="#myModal2" (click)="verifyOTP(otpVerifyform)">Verify</button>&nbsp;&nbsp;
+                        
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </form>
+</div>

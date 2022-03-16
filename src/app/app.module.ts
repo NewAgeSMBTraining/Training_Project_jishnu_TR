@@ -13,6 +13,13 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { OtpSentComponent } from './components/otp-sent/otp-sent.component';
+import { OtpVerificationComponent } from './components/otp-verification/otp-verification.component';
+import { ReserPasswordComponent } from './components/reser-password/reser-password.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
+
+
 
 
 @NgModule({
@@ -22,11 +29,16 @@ import { OtpSentComponent } from './components/otp-sent/otp-sent.component';
     CreateUserComponent,
     EmployeeListComponent,
     ForgotPasswordComponent,
-    OtpSentComponent
+    OtpSentComponent,
+    OtpVerificationComponent,
+    ReserPasswordComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,HttpClientModule,ReactiveFormsModule,FormsModule,RouterModule, BrowserAnimationsModule
+    AppRoutingModule,HttpClientModule,ReactiveFormsModule,FormsModule,RouterModule, BrowserAnimationsModule,
+    NgxPaginationModule,
+    
     
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
