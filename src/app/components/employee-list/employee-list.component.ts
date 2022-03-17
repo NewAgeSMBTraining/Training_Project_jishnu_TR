@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router ,ActivatedRoute} from '@angular/router';
 import { AuthenticationService } from 'src/app/authentication.service';
-import { UserDetailspage } from 'src/app/model/models/Models.model';
+import { UserDetailspage,Pagination, UserFilter } from 'src/app/model/models/Models.model';
+import { environment } from 'src/environments/environment';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-employee-list',
@@ -14,12 +16,27 @@ export class EmployeeListComponent implements OnInit {
   userdetailsObj: UserDetailspage = new UserDetailspage
   // userdetailsForm!: FormGroup;
   submitted = false;
-  searchValue! : string;
+  // searchValue! : string;
   //  userData : user = []
   first_name :any;
 
+  search?: string = '';
+  filters: UserFilter = {
+    active: '',
+    role_id: {
+      $notIn: [1],
+    },
+  };
+  
 
-  constructor(private fb: FormBuilder, private authentication: AuthenticationService, private router: Router) { }
+  pagination: Pagination = {
+    page: 1,
+    limit: environment.PAGINATION_LIMIT,
+    count: 0,
+  };
+
+
+  constructor(private fb: FormBuilder, private authentication: AuthenticationService, private router: Router,private _route: ActivatedRoute,private _location: Location,) { }
   totalLength :any;
   p:number=1;
   
@@ -27,7 +44,14 @@ export class EmployeeListComponent implements OnInit {
 
  
   ngOnInit(): void {
-    this.getUser();
+    this._route.queryParams.subscribe((params) => {
+      this.search = params.search ?? '';
+      this.filters.active = params.active || '';
+      this.pagination.page = params.page ? +params.page : 1;
+      this.pagination.count = this.pagination.page * this.pagination.limit;
+      this.getUser();
+    });
+    
    
   }
 
@@ -44,14 +68,45 @@ export class EmployeeListComponent implements OnInit {
 
   })
 
-  getUser(){
-    this.authentication.getGetUser().subscribe(data=>{
-      console.log(data)
-      this.userData=data;
-      this.totalLength =data.length;
-    })
+  changePage(page: number): void {
+    const urlTree = this.router.createUrlTree([], {
+      queryParams: {
+        page: page,
+        search: this.search || '',
+        active: this.filters.active || '',
+      },
+      queryParamsHandling: 'merge',
+      preserveFragment: true,
+    });
+    this._location.replaceState(urlTree.toString());
+    this.getUser();
+  }
+
+  async getUser(): Promise<void>{
+    // this.authentication.getGetUser().subscribe(data=>{
+    //   console.log(data)
+    //   this.userData=data;
+    //   this.totalLength =data.length;
+    // })
+    const offset = (this.pagination.page - 1) * this.pagination.limit;
+     const {error, data, message} =
+     await this.authentication.getGetUser('user',{
+      where: convertFilterToWhere(this.filters),
+      search: this.search,
+      offset,
+      limit: this.pagination.limit,
+      populate: ['role'],
+     });
+      if(!!error){
+     return message;
+        
+      }
+      this.userData = data?.users || []
+      this.pagination.count = data?.count || 0;
+      console.log(data);
 
   }
+
 
   get formControls() {
     return this.userdetailsForm.controls;
@@ -138,16 +193,20 @@ export class EmployeeListComponent implements OnInit {
     this.router.navigateByUrl('/login')
   }
 
-  search(){
-    if(this.first_name == "")
-    {
-      this.ngOnInit();
-    }
-    else{
-      this.userData = this.userData.filter((res : any)=>{
-        return res.first_name.toLocaleLowerCase().match(this.first_name.toLocaleLowerCase())
-      })
-    }
-  }
+  // search(){
+  //   if(this.first_name == "")
+  //   {
+  //     this.ngOnInit();
+  //   }
+  //   else{
+  //     this.userData = this.userData.filter((res : any)=>{
+  //       return res.first_name.toLocaleLowerCase().match(this.first_name.toLocaleLowerCase())
+  //     })
+  //   }
+  // }
 
 }
+function convertFilterToWhere(filters: UserFilter): any {
+  throw new Error('Function not implemented.');
+}
+

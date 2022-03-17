@@ -33,3 +33,30 @@ export class resetpassword {
     password?: string;
    
 }
+
+export class paginationData {
+    offset?: number;
+    limit?: number;
+    sort?: string[][] | { [key: string]: 1 | -1 };
+    where?: any;
+    filters?: any;
+    select?: string[];
+    populate?: string[];
+    search?: string;
+    data?: {
+      [key: string]: any
+    };
+}
+
+export class Pagination {
+    page!: number;
+    limit!: number;
+    count!: number;
+  }
+
+  export interface UserFilter {
+    active?: number | string;
+    role_id?: any;
+  }
+  
+
