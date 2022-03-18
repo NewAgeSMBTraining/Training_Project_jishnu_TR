@@ -16,7 +16,7 @@ import { Loginpage } from 'src/app/model/models/Models.model';
 export class LoginComponent implements OnInit {
   loginform!: FormGroup;
   submitted = false;
-  loading = false;
+  
   LoginObj: Loginpage = {
   };
   constructor(private fb: FormBuilder, private authentication: AuthenticationService, private router: Router) { }
