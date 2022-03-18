@@ -15,9 +15,10 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { OtpSentComponent } from './components/otp-sent/otp-sent.component';
 import { OtpVerificationComponent } from './components/otp-verification/otp-verification.component';
 import { ReserPasswordComponent } from './components/reser-password/reser-password.component';
-// import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-// import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -41,9 +42,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
   imports: [
     BrowserModule,
     AppRoutingModule,HttpClientModule,ReactiveFormsModule,FormsModule,RouterModule, BrowserAnimationsModule,
-    // NgxPaginationModule,
-    Ng2SearchPipeModule,
-    // NgbPaginationModule
+    NgxPaginationModule,
+    Ng2SearchPipeModule,NgbModule,NgbPaginationModule
+    
     
     
     

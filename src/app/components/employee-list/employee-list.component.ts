@@ -37,8 +37,8 @@ export class EmployeeListComponent implements OnInit {
 
 
   constructor(private fb: FormBuilder, private authentication: AuthenticationService, private router: Router,private _route: ActivatedRoute,private _location: Location,) { }
-  totalLength :any;
-  p:number=1;
+  // totalLength :any;
+  // p:number=1;
   
 
 
@@ -47,7 +47,7 @@ export class EmployeeListComponent implements OnInit {
     this._route.queryParams.subscribe((params) => {
       this.search = params.search ?? '';
       this.filters.active = params.active || '';
-      this.pagination.page = params.page ? +params.page : 1;
+      this.pagination.page = params['page'] ? +params['page'] : 1;
       this.pagination.count = this.pagination.page * this.pagination.limit;
       this.getUser();
     });
@@ -91,7 +91,7 @@ export class EmployeeListComponent implements OnInit {
     const offset = (this.pagination.page - 1) * this.pagination.limit;
      const {error, data, message} =
      await this.authentication.getGetUser('user',{
-      where: convertFilterToWhere(this.filters),
+      // where: convertFilterToWhere(this.filters),
       search: this.search,
       offset,
       limit: this.pagination.limit,
@@ -101,8 +101,9 @@ export class EmployeeListComponent implements OnInit {
      return message;
         
       }
-      this.userData = data?.users || []
       this.pagination.count = data?.count || 0;
+      this.userData = data?.users || []
+     
       console.log(data);
 
   }

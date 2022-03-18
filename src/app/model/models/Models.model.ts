@@ -34,7 +34,7 @@ export class resetpassword {
    
 }
 
-export class paginationData {
+export interface paginationData {
     offset?: number;
     limit?: number;
     sort?: string[][] | { [key: string]: 1 | -1 };
@@ -58,5 +58,14 @@ export class Pagination {
     active?: number | string;
     role_id?: any;
   }
+
+  
+export interface ApiResponse {
+    data?: any;
+    error?: any;
+    message?: any;
+  }
+  
+ 
   
 

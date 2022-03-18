@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpErrorResponse,HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
-import { forgotPassword, Loginpage, otpVerification, paginationData, resetpassword, UserDetailspage } from './model/models/Models.model';
+import { ApiResponse, forgotPassword, Loginpage, otpVerification, paginationData, resetpassword, UserDetailspage } from './model/models/Models.model';
 import { jitOnlyGuardedExpression } from '@angular/compiler/src/render3/util';
 import { throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -40,7 +40,7 @@ export class AuthenticationService {
     "Authorization" : localStorage.getItem('Authorization') || ""
   })
   data!:Loginpage[];
-  private apiBaseUrl =  environment.API_ENDPOINT;
+  private apiBaseUrl =  'http://web.newagesme.com:3636';
   
 
   constructor(private httpclient: HttpClient,private httpservice:HttpService) { }
@@ -71,7 +71,7 @@ export class AuthenticationService {
   // }
 
   
-  async getGetUser(url: string, options?: paginationData, auth: boolean = true) {
+  async getGetUser(url: string, options?: paginationData):Promise<ApiResponse>  {
     try {
       const response = await this.httpservice.get(this.generateQueryUrl(url, options),{headers : this.header});
       return response;

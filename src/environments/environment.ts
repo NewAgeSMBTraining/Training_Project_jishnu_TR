@@ -6,8 +6,8 @@ export const environment = {
   production: false ,
   DATE_FORMAT: 'MM/dd/yyyy',
   DATE_TIME_FORMAT: 'MM/dd/yyyy hh:mm a',
-  PAGINATION_LIMIT: 10,
-  API_ENDPOINT: 'http://web.newagesme.com:3636/user/',
+  PAGINATION_LIMIT: 6,
+  // API_ENDPOINT: 'http://web.newagesme.com:3636/user/',
 };
 
 /*
