@@ -27,54 +27,58 @@ export class OtpVerificationComponent implements OnInit {
   ngOnInit(): void {
 
     console.log(history.state)
-    this.getSessionId=history.state.data;
+    this.getSessionId = history.state.data;
 
     this.otpVerifyform = this.fb.group({
-     
+
       session_id: [''],
-      otp: ['',[Validators.required]],
-      
+      otp: ['', [Validators.required]],
+
     },
-    {
+      {
 
-    
 
-    })
+
+      })
   }
-  
+
 
   get formControls() {
     return this.otpVerifyform.controls;
   }
 
   verifyOTP(data: any) {
-   
-  
+    this.submitted = true;
+
+
     const Object = {
       session_id: this.getSessionId,
       otp: data.value.otp
     }
-    this.authentication.postVerifyOTP(Object).subscribe(
-      (res) => {
-        console.log("OTP VALUE", res)
-        
+    if (this.otpVerifyform.valid) {
 
-        if (res.message == "OTP verified") {
-          alert("OTP verified Successfully")
-          this.router.navigate(['/reser-password'],{state: {data : this.getSessionId}});
-          
+      this.authentication.postVerifyOTP(Object).subscribe(
+        (res) => {
+          console.log("OTP VALUE", res)
 
-        }
 
-        else {
-          alert("please check OTP is correct or not")
-        }
+          if (res.message == "OTP verified") {
+            alert("OTP verified Successfully")
+            this.router.navigate(['/reser-password'], { state: { data: this.getSessionId } });
 
-      },
-      (err) => {
-        console.log(err);
-        alert("error")
-      });
+
+          }
+
+          else {
+            alert("please check OTP is correct or not")
+          }
+
+        },
+        (err) => {
+          console.log(err);
+          alert("error")
+        });
+    }
 
   }
 

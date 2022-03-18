@@ -24,19 +24,19 @@ export class ForgotPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.forgotpassform = this.fb.group({
-      email: ['',[Validators.required,Validators.pattern('^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$')]],
+      email: ['', [Validators.required, Validators.pattern('^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$')]],
       session_id: [''],
       // otp: ['',[Validators.required]],
       // password:['',[Validators.required,[Validators.required,Validators.pattern('^[A-Za-z0-9]{6,10}$')]]],
       // cofirmpassword:['',[Validators.required,Validators.required,Validators.pattern('^[A-Za-z0-9]{6,10}$')]]
     },
-    {
+      {
 
-    // Validator:ConfirmedValidator('password','cofirmpassword')
+        // Validator:ConfirmedValidator('password','cofirmpassword')
 
-    })
+      })
   }
-  saveform(){
+  saveform() {
 
   }
   get formControls() {
@@ -50,35 +50,41 @@ export class ForgotPasswordComponent implements OnInit {
       email: data.value.email,
     }
 
-    this.authentication.postForgotPassword(Object).subscribe(
-      (res) => {
-        console.log("email", res)
-        this.getSessionId=res.data.session_id
-        // localStorage.setItem("QWER",res.data.session_id)
-        
-        if (res.message == "OTP sent") {
-          alert("OTP Send successfully")
-          this.router.navigate(['/otp-verification'],{state: {data : this.getSessionId}});
+    if (this.forgotpassform.valid) {
 
-        }
+      this.authentication.postForgotPassword(Object).subscribe(
+        (res) => {
+          console.log("email", res)
+          this.getSessionId = res.data.session_id
+          // localStorage.setItem("QWER",res.data.session_id)
 
-        else {
-          alert("please check email is correct or not")
-        }
+          if (res.message == "OTP sent") {
+            alert("OTP Send successfully")
+            this.router.navigate(['/otp-verification'], { state: { data: this.getSessionId } });
 
-      },
-      (err) => {
-        console.log(err);
-        alert("error")
-      });
+          }
+
+          else {
+            alert("please check email is correct or not")
+          }
+
+        },
+        (err) => {
+          console.log(err);
+          alert("error")
+        });
+
+    }
+
 
   }
 
 
 
+
   // verifyOTP(data: any) {
-   
-  
+
+
   //   const Object = {
   //     session_id: this.getSessionId,
   //     otp: data.value.otp
@@ -86,11 +92,11 @@ export class ForgotPasswordComponent implements OnInit {
   //   this.authentication.postVerifyOTP(Object).subscribe(
   //     (res) => {
   //       console.log("OTP VALUE", res)
-        
+
 
   //       if (res.message == "OTP verified") {
   //         alert("OTP verified Successfully")
-          
+
 
   //       }
 
@@ -107,8 +113,8 @@ export class ForgotPasswordComponent implements OnInit {
   // }
 
   // resetPassword(data: any) {
-   
-  
+
+
   //   const Object = {
   //     session_id: this.getSessionId,
   //     password: data.value.password
@@ -116,11 +122,11 @@ export class ForgotPasswordComponent implements OnInit {
   //   this.authentication.postResetPassword(Object).subscribe(
   //     (res) => {
   //       console.log("Result", res)
-        
+
 
   //       if (res.message == "Password changed") {
   //         alert("password updated Successfully")
-          
+
 
   //       }
 
@@ -138,5 +144,5 @@ export class ForgotPasswordComponent implements OnInit {
 
 
 
-  
+
 }
