@@ -6,6 +6,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { LoginComponent } from './components/login/login.component';
 import { OtpVerificationComponent } from './components/otp-verification/otp-verification.component';
 import { ReserPasswordComponent } from './components/reser-password/reser-password.component';
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 const routes: Routes = [ 
   { path:'',redirectTo:'login' ,pathMatch:'full'},
@@ -14,7 +16,11 @@ const routes: Routes = [
   {path:'employee-list', component:EmployeeListComponent},
   {path:'forgot-password', component:ForgotPasswordComponent},
   {path:'otp-verification', component:OtpVerificationComponent},
-  {path:'reser-password', component:ReserPasswordComponent} ];  
+  {path:'reser-password', component:ReserPasswordComponent} ,
+  {path:'user-profile', component:UserProfileComponent},
+  {path:'update-password', component:UpdatePasswordComponent} 
+
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -19,6 +19,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 
 
 
@@ -36,6 +38,8 @@ import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
     OtpSentComponent,
     OtpVerificationComponent,
     ReserPasswordComponent,
+    UserProfileComponent,
+    UpdatePasswordComponent,
     
     
   ],
@@ -53,4 +57,6 @@ import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  
+}

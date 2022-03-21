@@ -140,6 +140,28 @@ export class AuthenticationService {
         }))
   }
 
+  userLoginDetails(){
+    return this.httpclient.get<any>("http://web.newagesme.com:3636/user/me",{headers:this.header}).pipe(
+      map(
+        (res) => {
+          return res.data.user
+        }))
+  }
+  updateuserLoginDetails(data:any){
+    return this.httpclient.put<any>("http://web.newagesme.com:3636/user/me",data,{headers:this.header}).pipe(
+      map(
+        (res) => {
+          return res
+        }))
+  }
+  updateUserPassword(data:any){
+    return this.httpclient.put<any>("http://web.newagesme.com:3636/user/password",data,{headers:this.header}).pipe(
+      map(
+        (res) => {
+          return res
+        }))
+  }
+
   
 
   

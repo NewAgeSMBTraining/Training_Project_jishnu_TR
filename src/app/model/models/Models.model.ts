@@ -65,7 +65,35 @@ export interface ApiResponse {
     error?: any;
     message?: any;
   }
+
+  export class UserProfilespage {
+    id!: number ;
+    role_id?: number;
+    first_name?:string;
+    last_name?:string;
+    email?:string;
+    phone_code?:string;
+    phone?:string;
+  }
+
+  export interface S3Response {
+    Bucket?: string;
+    ETag?: string;
+    Key?: string;
+    Location?: string;
+  }
   
+  export interface s3UploadCustomeFile {
+    file?: any;
+    file_name?: string;
+    type?: string;
+    s3File?: S3Response
+  }
+  
+  export class ChangePassword{
+    password?:string;
+    old_password?:string;
+}
  
   
 
