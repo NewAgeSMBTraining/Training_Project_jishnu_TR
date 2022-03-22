@@ -14,11 +14,13 @@ import { Location } from '@angular/common';
 })
 export class UserProfileComponent implements OnInit {
   loggedUserData: any =[];
-  s3File: s3UploadCustomeFile = {};
+ 
   userprofileObj: UserProfilespage = new UserProfilespage
+
+ 
   
   submitted = false;
-  S3_FULL_URL = environment.S3_FULL_URL;
+  
 
   constructor(private fb: FormBuilder, private authentication: AuthenticationService, private router: Router, private _route: ActivatedRoute, private _location: Location,) { }
 
@@ -26,6 +28,8 @@ export class UserProfileComponent implements OnInit {
 
     this.UserProfile()
   }
+
+  
 
   userprofileForm=this.fb.group({
     id: [''],
@@ -91,6 +95,18 @@ export class UserProfileComponent implements OnInit {
     alert("signout successfully")
     this.router.navigateByUrl('/login')
   }
+
+  // onSelectFile(event) {
+  //   if (event.target.files && event.target.files[0]) {
+  //     var reader = new FileReader();
+
+  //     reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+  //     reader.onload = (event) => { // called once readAsDataURL is completed
+  //       this.url = event.target.result;
+  //     }
+  //   }
+  // }
 
   // imageChanged(event: any) {
   //   this.s3File = {

@@ -28,6 +28,7 @@ import { UpdatePasswordComponent } from './components/update-password/update-pas
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +48,7 @@ import { UpdatePasswordComponent } from './components/update-password/update-pas
     BrowserModule,
     AppRoutingModule,HttpClientModule,ReactiveFormsModule,FormsModule,RouterModule, BrowserAnimationsModule,
     NgxPaginationModule,
-    Ng2SearchPipeModule,NgbModule,NgbPaginationModule
+    Ng2SearchPipeModule,NgbModule,NgbPaginationModule,
     
     
     
