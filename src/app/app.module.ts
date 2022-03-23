@@ -21,6 +21,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
+import { NbThemeModule,NbAlertModule } from '@nebular/theme';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
 
 
 
@@ -48,7 +51,7 @@ import { UpdatePasswordComponent } from './components/update-password/update-pas
     BrowserModule,
     AppRoutingModule,HttpClientModule,ReactiveFormsModule,FormsModule,RouterModule, BrowserAnimationsModule,
     NgxPaginationModule,
-    Ng2SearchPipeModule,NgbModule,NgbPaginationModule,
+    Ng2SearchPipeModule,NgbModule,NgbPaginationModule, NbThemeModule.forRoot({name:'default'}),NbAlertModule
     
     
     

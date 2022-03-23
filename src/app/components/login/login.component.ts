@@ -3,15 +3,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/authentication.service';
 import { Loginpage } from 'src/app/model/models/Models.model';
+import { ChangeDetectionStrategy } from '@angular/core';
 
 
 
-
+// selector: 'nb-card-showcase',
+// changeDetection: ChangeDetectionStrategy.OnPush,
+// templateUrl: './alert-showcase.component.html',
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent implements OnInit {
   loginform!: FormGroup;

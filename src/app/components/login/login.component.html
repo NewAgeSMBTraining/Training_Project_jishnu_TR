@@ -1,36 +1,51 @@
-<div class="login">
-    <div class="card">
-        <div class="card-body">
-            <form [formGroup]="loginform" class="form-signin">
-                <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+<nb-card>
+    <div class="login">
+        <div class="card">
+            <div class="card-body">
+                <!-- <nb-card-body> -->
+                    <form [formGroup]="loginform" class="form-signin">
+                        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 
-                <label for="inputlogin" class="sr-only">Login </label>
-                <input type="text" id="inputLogin" class="form-control" placeholder="Login" 
-                    formControlName="username" 
-                    [ngClass]="{'is-invalid': submitted && this.loginform.controls.username.errors}">
-                <div *ngIf="submitted && formControls.username.errors?.required" class="text-danger">*Usename/email is required
-                </div>
-                <div *ngIf="submitted && formControls.username.errors?.pattern" class="text-danger">*please enter valid
-                    email</div>
-
-
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="pwd" class="form-control"  placeholder="Password"
-                    formControlName="password" 
-                    [ngClass]="{'is-invalid': submitted && this.loginform.controls.password.errors}">
-                <div *ngIf="submitted && formControls.password.errors?.required" class="text-danger">*Password is
-                    required</div>
-                <div *ngIf="submitted && formControls.password.errors?.pattern" class="text-danger">*password contain
-                    atleast 6 and upto 10 characters</div>
-
-                <a [routerLink]="['/forgot-password']" routerLinkActive="active">forgot Password ? Click here!</a>
+                        <label for="inputlogin" class="sr-only">Login </label>
+                        <input type="text" id="inputLogin" class="form-control" placeholder="Login"
+                            formControlName="username"
+                            [ngClass]="{'is-invalid': submitted && this.loginform.controls.username.errors}">
+                        <div *ngIf="submitted && formControls.username.errors?.required" class="text-danger">
+                            *Usename/email
+                            is required
+                        </div>
+                        <div *ngIf="submitted && formControls.username.errors?.pattern" class="text-danger">*please
+                            enter
+                            valid
+                            email</div>
 
 
-                <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login(loginform)">Sign
-                    in</button>
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input type="password" id="pwd" class="form-control" placeholder="Password"
+                            formControlName="password"
+                            [ngClass]="{'is-invalid': submitted && this.loginform.controls.password.errors}">
+                        <div *ngIf="submitted && formControls.password.errors?.required" class="text-danger">*Password
+                            is
+                            required</div>
+                        <div *ngIf="submitted && formControls.password.errors?.pattern" class="text-danger">*password
+                            contain
+                            atleast 6 and upto 10 characters</div>
+
+                        <a [routerLink]="['/forgot-password']" routerLinkActive="active">forgot Password ? Click
+                            here!</a>
 
 
-            </form>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login(loginform)">Sign
+                            in</button>
+
+                        <!-- <nb-alert messege="success">
+                        You have been successfully authenticated!
+                      </nb-alert> -->
+
+
+                    </form>
+            </div>
         </div>
     </div>
-</div>
+    <!-- </nb-card-body>
+</nb-card> -->
