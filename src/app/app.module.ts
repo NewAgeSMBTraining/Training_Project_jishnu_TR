@@ -23,6 +23,10 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 import { NbThemeModule,NbAlertModule } from '@nebular/theme';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { NbLayoutModule, NbToastrModule, NbDialogModule, NbCardModule } from '@nebular/theme';
+import { UserCreateComponent } from './components/user-create/user-create.component';
+import { UserUpdateComponent } from './components/user-update/user-update.component';
 
 
 
@@ -44,6 +48,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     ReserPasswordComponent,
     UserProfileComponent,
     UpdatePasswordComponent,
+    DialogComponent,
+    UserCreateComponent,
+    UserUpdateComponent,
     
     
   ],
@@ -51,7 +58,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     BrowserModule,
     AppRoutingModule,HttpClientModule,ReactiveFormsModule,FormsModule,RouterModule, BrowserAnimationsModule,
     NgxPaginationModule,
-    Ng2SearchPipeModule,NgbModule,NgbPaginationModule, NbThemeModule.forRoot({name:'default'}),NbAlertModule
+    Ng2SearchPipeModule,NgbModule,NgbPaginationModule, NbThemeModule.forRoot({name:'default'}),NbAlertModule,
+    
+    NbToastrModule.forRoot(),
+    NbDialogModule.forRoot(),
+    NbCardModule,NbLayoutModule
     
     
     

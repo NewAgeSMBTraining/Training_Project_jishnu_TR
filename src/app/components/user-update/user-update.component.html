@@ -1,0 +1,112 @@
+<nb-card>
+    <nb-card-header>Update User Details</nb-card-header>
+    <nb-card-body>
+
+        <form [formGroup]="userupdateForm">
+
+
+
+            <div class="p-1rem">
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <div class="mt-3 form-group">
+
+                            <label for="dob" class="form-label-custom">Role Id<span class="required-star">*</span><span
+                                    class="required-star"></span></label> <input type="number" min="1" max="2"
+                                class="form-control" id="qw" formControlName="role_id"
+                                [ngClass]="{'is-invalid': submitted && this.userupdateForm.controls.role_id.errors}">
+                            <div *ngIf="submitted && formControls.role_id.errors?.required" class="text-danger">Role
+                                Id is
+                                required</div>
+                            <!-- <div *ngIf="submitted && formControls.role_id.errors?.maxlength" class="text-danger">* maximum 20
+                          digits</div>
+                      <div *ngIf="submitted && formControls.role_id.errors?.pattern" class="text-danger">*unacceptable
+                          special character occured</div> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <div class="mt-3 form-group">
+                            <label for="usr" class=" form-label-custom">First Name <span
+                                    class="required-star">*</span></label> <input type="text" placeholder=""
+                                class="form-control" id="we" formControlName="first_name"
+                                [ngClass]="{'is-invalid': submitted && this.userupdateForm.controls.first_name.errors}">
+                            <div *ngIf="submitted && formControls.first_name.errors?.required" class="text-danger">
+                                First Name is required</div>
+                            <div *ngIf="submitted && formControls.first_name.errors?.pattern" class="text-danger">
+                                only
+                                alphabets</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Last
+                                Name<span class="required-star">*</span></label>
+                            <input type="text" placeholder="" class="form-control" id="er" formControlName="last_name"
+                                [ngClass]="{'is-invalid': submitted && this.userupdateForm.controls.last_name.errors}">
+                            <div *ngIf="submitted && formControls.last_name.errors?.required" class="text-danger">
+                                Last
+                                Name is required</div>
+                            <div *ngIf="submitted && formControls.last_name.errors?.pattern" class="text-danger">
+                                only
+                                alphabets</div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Email
+                                <span class="required-star">*</span></label> <input type="text" placeholder=""
+                                class="form-control" id="rt" formControlName="email"
+                                [ngClass]="{'is-invalid': submitted && this.userupdateForm.controls.email.errors}">
+                            <div *ngIf="submitted && formControls.email.errors?.required" class="text-danger">Email
+                                is
+                                required</div>
+                            <div *ngIf="submitted && formControls.email.errors?.pattern" class="text-danger">please
+                                enter valid email</div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Phone
+                                code(eg:+1)
+                                <span class="required-star">*</span></label> <input type="text" placeholder=""
+                                class="form-control" id="ty" formControlName="phone_code"
+                                [ngClass]="{'is-invalid': submitted && this.userupdateForm.controls.phone_code.errors}">
+                            <div *ngIf="submitted && formControls.phone_code.errors?.required" class="text-danger">
+                                Phone code is required</div>
+                            <div *ngIf="submitted && formControls.phone_code.errors?.pattern" class="text-danger">
+                                please enter valid phone code</div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <div class="mt-3 form-group"> <label for="usr" class=" form-label-custom">Mobile
+                                <span class="required-star">*</span></label> <input type="text" placeholder=""
+                                class="form-control" id="yu" formControlName="phone"
+                                [ngClass]="{'is-invalid': submitted && this.userupdateForm.controls.phone.errors}">
+                            <div *ngIf="submitted && formControls.phone.errors?.required" class="text-danger">Phone
+                                number is required</div>
+                            <div *ngIf="submitted && formControls.phone.errors?.pattern" class="text-danger">please
+                                enter valid phone number</div>
+
+                        </div>
+                    </div>
+                   
+                    
+                    
+
+                </div>
+            </div>
+
+
+        </form>
+
+    </nb-card-body>
+    <nb-card-footer>
+
+        <button type="button" (click)="dismiss(false)" class="btn btn-light">Close</button>
+        <button type="button" (click)="updateUser()"  style="margin: 10px;" class="btn btn-light">Update</button>
+
+
+    </nb-card-footer>
+</nb-card>

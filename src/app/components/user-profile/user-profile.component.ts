@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from 'src/app/authentication.service';
-import {  UserProfilespage, s3UploadCustomeFile } from 'src/app/model/models/Models.model';
+import {  UserProfilespage} from 'src/app/model/models/Models.model';
 import { environment } from 'src/environments/environment';
 import { Location } from '@angular/common';
 

@@ -54,7 +54,7 @@
                   <td>{{user.email}}</td>
                   <td>{{user.phone}}</td>
 
-                  <td> <button (click)="updateDetails(user)" style="margin: 5px;" type="button" class="btn btn-light"
+                  <td> <button (click)="updateuser(user)" style="margin: 5px;" type="button" class="btn btn-light"
                       data-bs-toggle="modal" data-bs-target="#exampleModal1">Edit</button>
                     <button (click)="deleteDetails(user)" style="margin: 5px;" type="button"
                       class="btn btn-light">Delete</button>
@@ -74,8 +74,7 @@
             <!-- Button trigger modal -->
             <div class="text-center ">
               <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
-              <button type="button" class="btn btn-light" style="margin: 5px;" data-bs-toggle="modal"
-                data-bs-target="#userCreation">
+              <button type="button" class="btn btn-light" style="margin: 5px;" (click)="createuser()">
                 Add User
               </button>
               <button type="button" class="btn btn-light" style="margin: 10px;" (click)="logoutUser()">
@@ -85,7 +84,7 @@
 
             <!-- Modal create user -->
 
-            <div class="modal fade" id="userCreation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            <!-- <div class="modal fade" id="userCreation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
               aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -105,10 +104,7 @@
                               <div *ngIf="submitted && formControls.role_id.errors?.required" class="text-danger">Role
                                 Id is
                                 required</div>
-                              <!-- <div *ngIf="submitted && formControls.role_id.errors?.maxlength" class="text-danger">* maximum 20
-                                  digits</div>
-                              <div *ngIf="submitted && formControls.role_id.errors?.pattern" class="text-danger">*unacceptable
-                                  special character occured</div> -->
+                              
                             </div>
                           </div>
                           <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
@@ -206,13 +202,18 @@
 
                 </div>
               </div>
-            </div>
+            </div> -->
+
+
+
+
+
 
 
             <!-- modal update -->
 
 
-            <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+            <!-- <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
               aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -281,12 +282,13 @@
                     </form>
                   </div>
                   <div class="modal-footer">
+                    
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" (click)="updateUser()" class="btn btn-light">Update</button>
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
           </div>
         </div>

@@ -2,9 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from 'src/app/authentication.service';
-import { UserDetailspage, Pagination, UserFilter } from 'src/app/model/models/Models.model';
+import { UserDetailspage, Pagination, UserFilter, DialogResponse } from 'src/app/model/models/Models.model';
 import { environment } from 'src/environments/environment';
 import { Location } from '@angular/common';
+import { UserCreateComponent } from '../user-create/user-create.component';
+import { UserUpdateComponent } from '../user-update/user-update.component';
+import { ToastService } from 'src/app/toast.service';
+import { DailogService } from 'src/app/dialog.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -36,7 +40,9 @@ export class EmployeeListComponent implements OnInit {
   };
 
 
-  constructor(private fb: FormBuilder, private authentication: AuthenticationService, private router: Router, private _route: ActivatedRoute, private _location: Location,) { }
+  constructor(private fb: FormBuilder, private authentication: AuthenticationService, private router: Router, private _route: ActivatedRoute, private _location: Location,
+    private toast:ToastService,
+    private dailog:DailogService,) { }
   // totalLength :any;
   // p:number=1;
 
@@ -44,17 +50,19 @@ export class EmployeeListComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this._route.queryParams.subscribe((params) => {
-      this.search = params.search ?? '';
-      this.filters.active = params.active || '';
-      this.pagination.page = params['page'] ? +params['page'] : 1;
-      this.pagination.count = this.pagination.page * this.pagination.limit;
-      this.getUser();
-    });
+    this.getUser();
+    // this._route.queryParams.subscribe((params) => {
+    //   this.search = params.search ?? '';
+    //   this.filters.active = params.active || '';
+    //   this.pagination.page = params['page'] ? +params['page'] : 1;
+    //   this.pagination.count = this.pagination.page * this.pagination.limit;
+    //   this.getUser();
+    // });
 
 
   }
-
+  
+  
   userdetailsForm = this.fb.group({
 
     id: [''],
@@ -113,105 +121,113 @@ export class EmployeeListComponent implements OnInit {
     return this.userdetailsForm.controls;
   }
 
-  createUser(data: any) {
-    this.submitted = true;
-
-    const Object = {
-      role_id: data.value.role_id,
-      first_name: data.value.first_name,
-      last_name: data.value.last_name,
-      email: data.value.email,
-      phone_code: data.value.phone_code,
-      phone: data.value.phone,
-      password: data.value.password,
-    }
-
-    if (this.userdetailsForm.valid) {
-
-
-      this.authentication.postCreateUser(Object).subscribe((res: any) => {
-        console.log(res);
-        if (res.message == "Created") {
-          alert("Created New User Successfully")
-          this.userdetailsForm.reset();
-          this.getUser();
-        }
-
-      }, (err) => {
-        console.log(err);
-        // alert("something went wrong")
-      })
-
-    }
+  createuser(){
+    this.dailog.openRef(UserCreateComponent).onClose.subscribe(()=>{
+      this.getUser()
+    })
   }
 
-    updateDetails(data: any) {
+  updateuser(data:any){
+    this.dailog.openRef(UserUpdateComponent, data).onClose.subscribe(()=>{
+      this.getUser()
+      
+      
+    })
+           
+  }
+
+  // createUser(data: any) {
+  //   this.submitted = true;
+
+  //   const Object = {
+  //     role_id: data.value.role_id,
+  //     first_name: data.value.first_name,
+  //     last_name: data.value.last_name,
+  //     email: data.value.email,
+  //     phone_code: data.value.phone_code,
+  //     phone: data.value.phone,
+  //     password: data.value.password,
+  //   }
+
+  //   if (this.userdetailsForm.valid) {
 
 
-      this.userdetailsForm.controls["role_id"].setValue(data.role_id)
-      this.userdetailsForm.controls["first_name"].setValue(data.first_name)
-      this.userdetailsForm.controls["last_name"].setValue(data.last_name)
-      this.userdetailsForm.controls["email"].setValue(data.email)
-      this.userdetailsForm.controls["phone_code"].setValue(data.phone_code)
-      this.userdetailsForm.controls["phone"].setValue(data.phone)
-      this.userdetailsForm.controls["password"].setValue(data.password)
-      this.userdetailsObj.id = data.id;
+  //     this.authentication.postCreateUser(Object).subscribe((res: any) => {
+  //       console.log(res);
+  //       if (res.message == "Created") {
+  //         alert("Created New User Successfully")
+  //         this.userdetailsForm.reset();
+  //         this.getUser();
+  //       }
 
-    }
+  //     }, (err) => {
+  //       console.log(err);
+        
+  //     })
 
-    updateUser() {
-      this.submitted = true;
+  //   }
+  // }
 
-      this.userdetailsObj.role_id = this.userdetailsForm.value.role_id;
-      this.userdetailsObj.first_name = this.userdetailsForm.value.first_name;
-      this.userdetailsObj.last_name = this.userdetailsForm.value.last_name;
-      this.userdetailsObj.email = this.userdetailsForm.value.email;
-      this.userdetailsObj.phone_code = this.userdetailsForm.value.phone_code;
-      this.userdetailsObj.phone = this.userdetailsForm.value.phone;
-
-      this.authentication.putEditUser(this.userdetailsObj, this.userdetailsObj.id).subscribe((res) => {
-        console.log(res);
-        if (res.message == "Updated") {
-          alert("User Details updated successfully")
-          this.getUser();
-
-        }
-      })
+    // updateDetails(data: any) {
 
 
-    }
+    //   this.userdetailsForm.controls["role_id"].setValue(data.role_id)
+    //   this.userdetailsForm.controls["first_name"].setValue(data.first_name)
+    //   this.userdetailsForm.controls["last_name"].setValue(data.last_name)
+    //   this.userdetailsForm.controls["email"].setValue(data.email)
+    //   this.userdetailsForm.controls["phone_code"].setValue(data.phone_code)
+    //   this.userdetailsForm.controls["phone"].setValue(data.phone)
+    //   this.userdetailsForm.controls["password"].setValue(data.password)
+    //   this.userdetailsObj.id = data.id;
+
+    // }
+
+    // updateUser() {
+    //   this.submitted = true;
+
+    //   this.userdetailsObj.role_id = this.userdetailsForm.value.role_id;
+    //   this.userdetailsObj.first_name = this.userdetailsForm.value.first_name;
+    //   this.userdetailsObj.last_name = this.userdetailsForm.value.last_name;
+    //   this.userdetailsObj.email = this.userdetailsForm.value.email;
+    //   this.userdetailsObj.phone_code = this.userdetailsForm.value.phone_code;
+    //   this.userdetailsObj.phone = this.userdetailsForm.value.phone;
+
+    //   this.authentication.putEditUser(this.userdetailsObj, this.userdetailsObj.id).subscribe((res) => {
+    //     console.log(res);
+    //     if (res.message == "Updated") {
+    //       alert("User Details updated successfully")
+    //       this.getUser();
+
+    //     }
+    //   })
+
+
+    // }
+
+
 
     deleteDetails(data: any) {
-      this.authentication.deleteDeleteUser(data.id).subscribe((res) => {
-        console.log(res);
-        if (res.message == "Deleted") {
-          alert("User details deleted successfully")
-          this.getUser();
-        }
-      }, (err) => {
-        alert("Error" + err)
-      })
-    }
+      this.dailog.open({text:'Are you sure you want to delete?'})
+      .subscribe((result:DialogResponse)=>{
+        
+          if(result.status==true){ 
+            this.authentication.deleteDeleteUser(data.id).subscribe((res) => {
+             console.log(res);
+            if (res.message == "Deleted") {
+              this.toast.info("User details deleted successfully")
+              this.getUser();
+            }}, (err) => {
+              this.toast.error("Error" + err)
+            })}
+       
+    })}
 
     logoutUser(){
       alert("signout successfully")
       this.router.navigateByUrl('/login')
     }
 
-    // search(){
-    //   if(this.first_name == "")
-    //   {
-    //     this.ngOnInit();
-    //   }
-    //   else{
-    //     this.userData = this.userData.filter((res : any)=>{
-    //       return res.first_name.toLocaleLowerCase().match(this.first_name.toLocaleLowerCase())
-    //     })
-    //   }
-    // }
 
   }
-function convertFilterToWhere(filters: UserFilter): any {
-  throw new Error('Function not implemented.');
-}
+
 
