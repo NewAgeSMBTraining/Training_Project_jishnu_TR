@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/authentication.service';
 import { Loginpage } from 'src/app/model/models/Models.model';
 import { ChangeDetectionStrategy } from '@angular/core';
+import { DialogComponent } from '../dialog/dialog.component';
+import { NbDialogRef } from '@nebular/theme';
+import { DialogResponse } from 'src/app/model/models/Models.model';
+import { ToastService } from 'src/app/toast.service';
 
 
 
@@ -23,7 +27,7 @@ export class LoginComponent implements OnInit {
   
   LoginObj: Loginpage = {
   };
-  constructor(private fb: FormBuilder, private authentication: AuthenticationService, private router: Router) { }
+  constructor(private fb: FormBuilder, private authentication: AuthenticationService, private router: Router,@Optional() private ref: NbDialogRef<DialogComponent>,protected toast: ToastService) { }
 
   ngOnInit(): void {
     this.loginform = this.fb.group({
@@ -33,6 +37,10 @@ export class LoginComponent implements OnInit {
     // this.title = JSON.parse(localStorage.getItem('Token')!);;
 
 
+  }
+  dismiss(status: boolean) {
+    let result: DialogResponse = { status: status, data: {} };
+    this.ref.close(result);
   }
 
   get formControls() {
@@ -61,7 +69,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('Authorization', 'Bearer ' + res.data.token)
 
         // if (res.message == "Login Success") {
-          alert("login successfully")
+          // alert("login successfully")
+          this.toast.success("login successfully")
           this.router.navigate(['/employee-list']);
 
         // }
@@ -73,7 +82,7 @@ export class LoginComponent implements OnInit {
       },
       (err) => {
         console.log(err);
-        alert("error")
+        this.toast.error(err);
 
       })
 

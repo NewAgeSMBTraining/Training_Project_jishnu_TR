@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from 'src/app/authentication.service';
 import { forgotPassword } from 'src/app/model/models/Models.model';
-// import { ConfirmedValidator } from '../confirmed.validator';
+import { DialogComponent } from '../dialog/dialog.component';
+import { NbDialogRef } from '@nebular/theme';
+import { DialogResponse } from 'src/app/model/models/Models.model';
+import { ToastService } from 'src/app/toast.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -20,7 +23,7 @@ export class ForgotPasswordComponent implements OnInit {
 
 
 
-  constructor(private fb: FormBuilder, private authentication: AuthenticationService, private router: Router) { }
+  constructor(private fb: FormBuilder, private authentication: AuthenticationService, private router: Router,@Optional() private ref: NbDialogRef<DialogComponent>,protected toast: ToastService) { }
 
   ngOnInit(): void {
     this.forgotpassform = this.fb.group({
@@ -59,19 +62,19 @@ export class ForgotPasswordComponent implements OnInit {
           // localStorage.setItem("QWER",res.data.session_id)
 
           if (res.message == "OTP sent") {
-            alert("OTP Send successfully")
+            this.toast.success("OTP Send successfully")
             this.router.navigate(['/otp-verification'], { state: { data: this.getSessionId } });
 
           }
 
           else {
-            alert("please check email is correct or not")
+            this.toast.warning("please check email is correct or not")
           }
 
         },
         (err) => {
           console.log(err);
-          alert("error")
+          this.toast.error("please check email is correct or not")
         });
 
     }

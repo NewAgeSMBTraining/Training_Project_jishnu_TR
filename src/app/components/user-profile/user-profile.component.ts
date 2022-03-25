@@ -1,10 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from 'src/app/authentication.service';
 import {  UserProfilespage} from 'src/app/model/models/Models.model';
 import { environment } from 'src/environments/environment';
 import { Location } from '@angular/common';
+import { DialogComponent } from '../dialog/dialog.component';
+import { NbDialogRef } from '@nebular/theme';
+import { DialogResponse } from 'src/app/model/models/Models.model';
+import { ToastService } from 'src/app/toast.service';
+
 
 
 @Component({
@@ -22,7 +27,7 @@ export class UserProfileComponent implements OnInit {
   submitted = false;
   
 
-  constructor(private fb: FormBuilder, private authentication: AuthenticationService, private router: Router, private _route: ActivatedRoute, private _location: Location,) { }
+  constructor(private fb: FormBuilder, private authentication: AuthenticationService, private router: Router, private _route: ActivatedRoute, private _location: Location,@Optional() private ref: NbDialogRef<DialogComponent>,protected toast: ToastService) { }
 
   ngOnInit(): void {
 
@@ -82,7 +87,7 @@ export class UserProfileComponent implements OnInit {
   
     this.authentication.updateuserLoginDetails(this.userprofileObj).subscribe((res) => {
       if (res.message == "Updated") {
-        alert("User Profile updated successfully")
+        this.toast.info("User Profile updated successfully")
         this.UserProfile()
       }    
     },(err)=>{
@@ -92,7 +97,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   logoutUser(){
-    alert("signout successfully")
+    this.toast.info("signout successfully")
     this.router.navigateByUrl('/login')
   }
 

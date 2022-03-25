@@ -1,10 +1,14 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from 'src/app/authentication.service';
 import { forgotPassword, otpVerification } from 'src/app/model/models/Models.model';
+import { DialogComponent } from '../dialog/dialog.component';
+import { NbDialogRef } from '@nebular/theme';
+import { DialogResponse } from 'src/app/model/models/Models.model';
+import { ToastService } from 'src/app/toast.service';
 
 
 @Component({
@@ -22,7 +26,7 @@ export class OtpVerificationComponent implements OnInit {
 
 
 
-  constructor(private fb: FormBuilder, private authentication: AuthenticationService, private router: Router) { }
+  constructor(private fb: FormBuilder, private authentication: AuthenticationService, private router: Router,@Optional() private ref: NbDialogRef<DialogComponent>,protected toast: ToastService) { }
 
   ngOnInit(): void {
 
@@ -63,20 +67,20 @@ export class OtpVerificationComponent implements OnInit {
 
 
           if (res.message == "OTP verified") {
-            alert("OTP verified Successfully")
+            this.toast.success("OTP verified Successfully")
             this.router.navigate(['/reser-password'], { state: { data: this.getSessionId } });
 
 
           }
 
           else {
-            alert("please check OTP is correct or not")
+            this.toast.warning("please check OTP is correct or not")
           }
 
         },
         (err) => {
           console.log(err);
-          alert("error")
+          this.toast.error("please check OTP is correct or not")
         });
     }
 

@@ -223,7 +223,7 @@ export class EmployeeListComponent implements OnInit {
     })}
 
     logoutUser(){
-      alert("signout successfully")
+      this.toast.info("signout successfully")
       this.router.navigateByUrl('/login')
     }
 

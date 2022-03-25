@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from 'src/app/authentication.service';
 import { resetpassword } from 'src/app/model/models/Models.model';
+import { DialogComponent } from '../dialog/dialog.component';
+import { NbDialogRef } from '@nebular/theme';
+import { DialogResponse } from 'src/app/model/models/Models.model';
+import { ToastService } from 'src/app/toast.service';
 
 @Component({
   selector: 'app-reser-password',
@@ -17,7 +21,7 @@ export class ReserPasswordComponent implements OnInit {
   };
   getSessionId!: string;
 
-  constructor(private fb: FormBuilder, private authentication: AuthenticationService, private router: Router) { }
+  constructor(private fb: FormBuilder, private authentication: AuthenticationService, private router: Router,@Optional() private ref: NbDialogRef<DialogComponent>,protected toast: ToastService) { }
 
   ngOnInit(): void {
 
@@ -63,20 +67,20 @@ export class ReserPasswordComponent implements OnInit {
 
 
           if (res.message == "Password changed") {
-            alert("password updated Successfully")
+            this.toast.success("password updated Successfully")
             this.router.navigate(['/login'], { state: { data: this.getSessionId } });
 
 
           }
 
           else {
-            alert("please check any errors")
+            this.toast.warning("please check any errors")
           }
 
         },
         (err) => {
           console.log(err);
-          alert("error")
+          this.toast.error("error")
         });
 
     }
