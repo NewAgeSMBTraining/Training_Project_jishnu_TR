@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
         // if (res.message == "Login Success") {
           // alert("login successfully")
           this.toast.success("login successfully")
-          this.router.navigate(['/employee-list']);
+          this.router.navigate(['/email-template-list']);
 
         // }
 

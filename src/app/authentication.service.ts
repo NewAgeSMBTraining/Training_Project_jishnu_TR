@@ -80,6 +80,8 @@ export class AuthenticationService {
     }
   }
 
+  
+
   errorHandler(e: any): any {
     if (e instanceof HttpErrorResponse) {
       return e.status ? { error: e.error, message: e.error?.message || 'network error' } : { error: e, message: 'network error' };
@@ -160,6 +162,15 @@ export class AuthenticationService {
         (res) => {
           return res
         }))
+  }
+
+  async getAll(entity: string, options?: paginationData): Promise<ApiResponse> {
+    try {
+      const response = await this.httpservice.get(this.generateQueryUrl(entity, options),{headers : this.header});
+      return response;
+    } catch (e) {
+      return this.errorHandler(e);
+    }
   }
 
   

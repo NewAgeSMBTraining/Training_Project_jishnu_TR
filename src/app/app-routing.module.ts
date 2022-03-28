@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateUserComponent } from './components/create-user/create-user.component';
+import { EmailTemplateListComponent } from './components/email-template-list/email-template-list.component';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { LoginComponent } from './components/login/login.component';
@@ -18,7 +19,9 @@ const routes: Routes = [
   {path:'otp-verification', component:OtpVerificationComponent},
   {path:'reser-password', component:ReserPasswordComponent} ,
   {path:'user-profile', component:UserProfileComponent},
-  {path:'update-password', component:UpdatePasswordComponent} 
+  {path:'update-password', component:UpdatePasswordComponent},
+  {path:'email-template-list', component:EmailTemplateListComponent},
+  
 
 ]
 

@@ -27,6 +27,9 @@ import { DialogComponent } from './components/dialog/dialog.component';
 import { NbLayoutModule, NbToastrModule, NbDialogModule, NbCardModule } from '@nebular/theme';
 import { UserCreateComponent } from './components/user-create/user-create.component';
 import { UserUpdateComponent } from './components/user-update/user-update.component';
+import { EmailTemplateListComponent } from './components/email-template-list/email-template-list.component';
+import { SortableDirective } from './directives/sortable.directive';
+import { TemplateDetailsComponent } from './components/template-details/template-details.component';
 
 
 
@@ -51,6 +54,9 @@ import { UserUpdateComponent } from './components/user-update/user-update.compon
     DialogComponent,
     UserCreateComponent,
     UserUpdateComponent,
+    EmailTemplateListComponent,
+    SortableDirective,
+    TemplateDetailsComponent,
     
     
   ],
