@@ -90,7 +90,7 @@ export class TemplateDetailsComponent implements OnInit {
       console.log(res);
       if(res.message=="Updated"){
         this.toast.primary("Data updated")
-        this.router.navigateByUrl("/templatelist")
+        this.router.navigateByUrl("/email-template-list")
       }
       
     },(err)=>{
