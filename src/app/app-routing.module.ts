@@ -7,6 +7,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { LoginComponent } from './components/login/login.component';
 import { OtpVerificationComponent } from './components/otp-verification/otp-verification.component';
 import { ReserPasswordComponent } from './components/reser-password/reser-password.component';
+import { TemplateDetailsComponent } from './components/template-details/template-details.component';
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path:'user-profile', component:UserProfileComponent},
   {path:'update-password', component:UpdatePasswordComponent},
   {path:'email-template-list', component:EmailTemplateListComponent},
+  {path:'template-details/:id', component:TemplateDetailsComponent},
   
 
 ]

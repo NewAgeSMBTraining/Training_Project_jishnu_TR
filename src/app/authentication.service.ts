@@ -12,7 +12,8 @@ import { HttpService } from './http.service';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  token !:string;
+  token! : string;
+  
 
   generateQueryUrl(path: string, options?: paginationData) {
     let url = `${this.apiBaseUrl}/${path}?`;
@@ -34,6 +35,18 @@ export class AuthenticationService {
     }
     return url;
   }
+
+  // token( ){
+  //   const headers:any = {
+  //    'Content-Type': 'application/json',
+     
+  //   }
+  //   const token = localStorage.getItem('Authorization') || ""
+  //   headers.Authorization = token
+  // return {
+  //   headers:new HttpHeaders(headers)
+  // }
+  // }
 
   header = new HttpHeaders({
     // 'Authorization' :"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOiI2MjI1Yzg4Y2Y0ZDZmMjA4NjQxMmJkYTciLCJ1c2VySWQiOjEsImlhdCI6MTY0NjY0MzM0MCwiZXhwIjoxNjQ2NzI5NzQwfQ.eKWCc3-P4T9vP-LDhRp6-G9ixXErqAEqWVN58iYRBio"
@@ -164,13 +177,38 @@ export class AuthenticationService {
         }))
   }
 
-  async getAll(entity: string, options?: paginationData): Promise<ApiResponse> {
-    try {
-      const response = await this.httpservice.get(this.generateQueryUrl(entity, options),{headers : this.header});
-      return response;
-    } catch (e) {
-      return this.errorHandler(e);
-    }
+  // async getAll(entity: string, options?: paginationData): Promise<ApiResponse> {
+  //   try {
+  //     const response = await this.httpservice.get(this.generateQueryUrl(entity, options),{headers : this.header});
+  //     return response;
+  //   } catch (e) {
+  //     return this.errorHandler(e);
+  //   }
+  // }
+
+
+  templateList(){
+    return this.httpclient.get<any>("http://web.newagesme.com:3636/template",{headers:this.header}).pipe(
+      map((res)=>{
+        return res
+      })
+    )
+  }
+
+  template(id:number){
+    return this.httpclient.get<any>("http://web.newagesme.com:3636/template/"+id,{headers:this.header}).pipe(
+      map((res)=>{
+        return res
+      })
+    )
+  }
+  
+  updatetemplateList(data:any, id:number){
+    return this.httpclient.put<any>("http://web.newagesme.com:3636/template/"+id,data,{headers:this.header}).pipe(
+      map((res)=>{
+        return res
+      })
+    )
   }
 
   

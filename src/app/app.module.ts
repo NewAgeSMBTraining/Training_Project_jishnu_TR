@@ -21,7 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
-import { NbThemeModule,NbAlertModule } from '@nebular/theme';
+import { NbThemeModule,NbAlertModule,NbCheckboxModule  } from '@nebular/theme';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { NbLayoutModule, NbToastrModule, NbDialogModule, NbCardModule } from '@nebular/theme';
@@ -30,6 +30,8 @@ import { UserUpdateComponent } from './components/user-update/user-update.compon
 import { EmailTemplateListComponent } from './components/email-template-list/email-template-list.component';
 import { SortableDirective } from './directives/sortable.directive';
 import { TemplateDetailsComponent } from './components/template-details/template-details.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+
 
 
 
@@ -59,6 +61,7 @@ import { TemplateDetailsComponent } from './components/template-details/template
     TemplateDetailsComponent,
     
     
+    
   ],
   imports: [
     BrowserModule,
@@ -68,13 +71,14 @@ import { TemplateDetailsComponent } from './components/template-details/template
     
     NbToastrModule.forRoot(),
     NbDialogModule.forRoot(),
-    NbCardModule,NbLayoutModule
+    NbCardModule,NbLayoutModule,
+    AngularEditorModule,NbCheckboxModule
     
     
     
     
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  // schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [],
   bootstrap: [AppComponent]
 })

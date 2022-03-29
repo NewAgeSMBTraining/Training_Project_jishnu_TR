@@ -34,7 +34,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <!-- <th scope="col">Id</th> -->
+                                    <th scope="col">Id</th>
                                     <th scope="col">Action </th>
                                     <th scope="col">Title</th>
                                     <th scope="col">Is Send Email</th>
@@ -44,14 +44,16 @@
                                     </th>
                                 </tr>
                             </thead>
-                            
+
 
                             <tbody>
                                 <tr *ngFor="let item of templates">
+                                    <td>{{item.id}}</td>
                                     <td scope="row" class="action-td">
-                                        <a [routerLink]="['/template/details', item?.id]">
-                                            <nb-icon icon="edit-outline"></nb-icon>
-                                        </a>
+                                    
+                                        <a [routerLink]="['/template-details', item?.id]"><button class="btn btn-light">Edit</button></a>
+                                            
+                                       
                                     </td>
                                     <td>{{item?.title || ''}}</td>
                                     <td>
@@ -73,11 +75,11 @@
                             </tbody>
 
                         </table>
-                        <ngb-pagination [hidden]="pagination.limit >= pagination.count"
+                        <!-- <ngb-pagination [hidden]="pagination.limit >= pagination.count"
                             [collectionSize]="pagination.count" [rotate]="true" [maxSize]="4" [(page)]="pagination.page"
                             [pageSize]="pagination.limit" (pageChange)="changePage($event)" [ellipses]="true"
                             [boundaryLinks]="true">
-                        </ngb-pagination>
+                        </ngb-pagination> -->
 
 
 

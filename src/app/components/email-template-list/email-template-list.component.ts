@@ -21,7 +21,7 @@ import { debounceTime, distinctUntilChanged, filter, tap } from 'rxjs/operators'
 })
 export class EmailTemplateListComponent implements OnInit {
 
-  templates: Template[] = [];
+  templates: any[] = [];
   search?: string = '';
   filters: TemplateFilter = {};
   sort: SortEvent;
@@ -42,87 +42,20 @@ export class EmailTemplateListComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.search = params.search ?? "";
-      this.pagination.page = params.page ? +params.page : 1;
-      this.pagination.count = this.pagination.page * this.pagination.limit;
-      this.getTemplates();
-    });
-
+    this.getList();
     
+
   }
 
-  ngAfterViewInit(): void {
-    fromEvent(this.searchInput?.nativeElement, 'keyup')
-      .pipe(
-        filter(Boolean),
-        debounceTime(300),
-        distinctUntilChanged(),
-        tap(() => {
-          this.changeFilter();
-        })
-      )
-      .subscribe();
+ 
+  getList(){
+    this.authentication.templateList().subscribe((res)=>{
+      this.templates = res.data.templates
+      console.log(res);
+      
+    })
   }
-
-  changePage(page?: number): void {
-    const urlTree = this.router.createUrlTree([], {
-      queryParams: {
-        page: page,
-        search: this.search || "",
-      },
-      queryParamsHandling: 'merge',
-      preserveFragment: true
-    });
-    this.location.replaceState(urlTree.toString());
-    this.getTemplates();
-  }
-
-  changeFilter(): void {
-    const urlTree = this.router.createUrlTree([], {
-      queryParams: {
-        page: null,
-        search: this.search || "",
-      },
-      queryParamsHandling: 'merge',
-      preserveFragment: true
-    });
-    this.location.replaceState(urlTree.toString());
-    this.getTemplates();
-  }
-
-
-  clearFilter() {
-    const urlTree = this.router.createUrlTree([], {
-      queryParams: {
-        page: null,
-        search: '',
-      },
-      queryParamsHandling: 'merge',
-      preserveFragment: true
-    });
-    this.location.replaceState(urlTree.toString());
-    this.search = ''
-    this.getTemplates()
-  }
-
-  async getTemplates(): Promise<void> {
-    this.loader.show();
-    const offset = (this.pagination.page - 1) * this.pagination.limit;
-    const { error, data, message } = await this.authentication.getAll('template', {
-      // where: convertFilterToWhere(this.filters),
-      search: this.search,
-      offset,
-      limit: this.pagination.limit,
-      sort: [this.sort.sort()]
-    });
-    this.loader.hide();
-    if (!!error) {
-      this.toast.error(message);
-      return;
-    }
-    this.pagination.count = data?.count || 0;
-    this.templates = data?.templates || [];
-  }
+  
+ 
 
 }
