@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CmsDetailsComponent } from './components/cms-details/cms-details.component';
+import { CmsManagementListComponent } from './components/cms-management-list/cms-management-list.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { EmailTemplateListComponent } from './components/email-template-list/email-template-list.component';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
@@ -23,6 +25,9 @@ const routes: Routes = [
   {path:'update-password', component:UpdatePasswordComponent},
   {path:'email-template-list', component:EmailTemplateListComponent},
   {path:'template-details/:id', component:TemplateDetailsComponent},
+  {path:'cms-management-list', component:CmsManagementListComponent},
+  {path:'cms-details/:id', component:CmsDetailsComponent},
+  {path:'cms-details', component:CmsDetailsComponent},
   
 
 ]

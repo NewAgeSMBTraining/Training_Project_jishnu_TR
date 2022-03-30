@@ -17,7 +17,6 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
 export class TemplateDetailsComponent implements OnInit {
 
   checked!: boolean;
-  config: any;
   templateDetailsform!:FormGroup
 
   editorConfig: AngularEditorConfig = {

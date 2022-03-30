@@ -116,6 +116,13 @@ export class DialogData {
   }
 }
 
+export interface cmsdetailsData {
+  name:string;
+  title:string;
+  content:string;
+  allow_html:boolean;
+}
+
 
 
 

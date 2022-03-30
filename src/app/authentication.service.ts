@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpErrorResponse,HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
-import { ApiResponse, forgotPassword, Loginpage, otpVerification, paginationData, resetpassword, UserDetailspage } from './model/models/Models.model';
+import { ApiResponse, cmsdetailsData, forgotPassword, Loginpage, otpVerification, paginationData, resetpassword, UserDetailspage } from './model/models/Models.model';
 import { jitOnlyGuardedExpression } from '@angular/compiler/src/render3/util';
 import { throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -209,6 +209,39 @@ export class AuthenticationService {
         return res
       })
     )
+  }
+
+  cmsList(){
+    return this.httpclient.get<any>("http://web.newagesme.com:3636/page",{headers:this.header}).pipe(
+      map((res)=>{
+        return res
+      })
+    )
+  }
+
+  createCmsRecord(data:cmsdetailsData){
+    return this.httpclient.post<any>("http://web.newagesme.com:3636/page",data,{headers:this.header}).pipe(
+      map((res)=>{
+        return res
+      })
+    )
+  }
+
+  cmstemplate(id:number){
+    return this.httpclient.get<any>("http://web.newagesme.com:3636/page/"+id,{headers:this.header}).pipe(
+      map((res)=>{
+        return res
+      })
+    )
+    
+  }
+  cmsupdatedlist(data:any, id:number){
+    return this.httpclient.put<any>("http://web.newagesme.com:3636/page/"+id,data,{headers:this.header}).pipe(
+      map((res)=>{
+        return res
+      })
+    )
+  
   }
 
   

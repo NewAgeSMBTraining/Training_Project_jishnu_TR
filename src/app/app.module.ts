@@ -31,6 +31,8 @@ import { EmailTemplateListComponent } from './components/email-template-list/ema
 import { SortableDirective } from './directives/sortable.directive';
 import { TemplateDetailsComponent } from './components/template-details/template-details.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { CmsManagementListComponent } from './components/cms-management-list/cms-management-list.component';
+import { CmsDetailsComponent } from './components/cms-details/cms-details.component';
 
 
 
@@ -59,6 +61,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     EmailTemplateListComponent,
     SortableDirective,
     TemplateDetailsComponent,
+    CmsManagementListComponent,
+    CmsDetailsComponent,
     
     
     

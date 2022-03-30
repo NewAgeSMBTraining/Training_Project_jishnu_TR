@@ -1,0 +1,100 @@
+<!-- <h3>Add details</h3>
+
+<form [formGroup]="cmsdetailsForm">
+    <div class="mb-3">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" placeholder="Enter name" class="form-control" formControlName="name">
+    </div>
+    <div class="mb-3">
+        <label for="title">Title</label>
+        <input id="title" name="tilte" type="text" placeholder="Enter Title" class="form-control" formControlName="title">
+    </div>
+
+    <div class="form-group">
+        <nb-checkbox  formControlName="allow_html">Allow HTML?
+        </nb-checkbox>
+    </div>
+    
+   <div class="mb-3">
+    <label for="content">Content</label>
+	<ckeditor
+    formControlName="content"
+    
+		id="content"
+		name="content">
+	</ckeditor>
+</div>
+</form>
+
+<button  (click)="CreateNew(cmsdetailsForm)" class="btn btn-primary">Submit</button>
+<button  (click)="cmsdetailsUpdate()" class="btn btn-primary">Update</button> -->
+
+<div class="row align-items-center vh-100">
+    <div class="col-8 mx-auto">
+        <!-- <div class="container text-center">
+            <h1 class="display-4">Profile</h1>
+        </div> -->
+        <div class="mt-8 p-5 alert alert-success rounded">
+            <div class="container text-center">
+                <h1>CMS Details</h1>
+
+
+                <div class="card shadow border">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <form [formGroup]="cmsdetailsForm">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="mb-3" style="margin: 30px;">
+                                            <label for="title">Name</label>
+                                            <input id="title" type="text" class="form-control"
+                                                formControlName="name">
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <!-- <div class="form-group">
+                                    <nb-checkbox  formControlName="send_email">Send Email?
+                                    </nb-checkbox>
+                                </div> -->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="mb-3" style="margin: 30px;">
+                                            <label for="title">Title</label>
+                                            <input id="title" name="title" type="text" class="form-control"
+                                                formControlName="title">
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="form-group">
+                                    <nb-checkbox  formControlName="allow_html">Allow HTML?
+                                    </nb-checkbox>
+                                </div>
+
+                                <div class="col-md-12">
+                                    
+                                    <div class="form-group" style="margin: 30px;">
+                                        <label for="email_body">Content</label>
+                                        <angular-editor formControlName="content" [config]="editorConfig">
+                                        </angular-editor>
+                                    </div>
+
+
+                                </div>
+
+                                
+                            </div>
+                        </form>
+
+                        <button  (click)="CreateNew(cmsdetailsForm)" style="margin: 5px;" class="btn btn-success" >Add</button>
+                        <button  (click)="cmsdetailsUpdate()" style="margin: 5px;"  class="btn btn-light">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

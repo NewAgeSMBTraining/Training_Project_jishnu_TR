@@ -56,6 +56,4 @@ export class EmailTemplateListComponent implements OnInit {
     })
   }
   
- 
-
 }
