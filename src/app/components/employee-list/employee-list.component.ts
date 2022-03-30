@@ -41,8 +41,8 @@ export class EmployeeListComponent implements OnInit {
 
 
   constructor(private fb: FormBuilder, private authentication: AuthenticationService, private router: Router, private _route: ActivatedRoute, private _location: Location,
-    private toast:ToastService,
-    private dailog:DailogService,) { }
+    private toast: ToastService,
+    private dailog: DailogService,) { }
   // totalLength :any;
   // p:number=1;
 
@@ -61,8 +61,8 @@ export class EmployeeListComponent implements OnInit {
 
 
   }
-  
-  
+
+
   userdetailsForm = this.fb.group({
 
     id: [''],
@@ -121,19 +121,19 @@ export class EmployeeListComponent implements OnInit {
     return this.userdetailsForm.controls;
   }
 
-  createuser(){
-    this.dailog.openRef(UserCreateComponent).onClose.subscribe(()=>{
+  createuser() {
+    this.dailog.openRef(UserCreateComponent).onClose.subscribe(() => {
       this.getUser()
     })
   }
 
-  updateuser(data:any){
-    this.dailog.openRef(UserUpdateComponent, data).onClose.subscribe(()=>{
+  updateuser(data: any) {
+    this.dailog.openRef(UserUpdateComponent, data).onClose.subscribe(() => {
       this.getUser()
-      
-      
+
+
     })
-           
+
   }
 
   // createUser(data: any) {
@@ -162,72 +162,75 @@ export class EmployeeListComponent implements OnInit {
 
   //     }, (err) => {
   //       console.log(err);
-        
+
   //     })
 
   //   }
   // }
 
-    // updateDetails(data: any) {
+  // updateDetails(data: any) {
 
 
-    //   this.userdetailsForm.controls["role_id"].setValue(data.role_id)
-    //   this.userdetailsForm.controls["first_name"].setValue(data.first_name)
-    //   this.userdetailsForm.controls["last_name"].setValue(data.last_name)
-    //   this.userdetailsForm.controls["email"].setValue(data.email)
-    //   this.userdetailsForm.controls["phone_code"].setValue(data.phone_code)
-    //   this.userdetailsForm.controls["phone"].setValue(data.phone)
-    //   this.userdetailsForm.controls["password"].setValue(data.password)
-    //   this.userdetailsObj.id = data.id;
+  //   this.userdetailsForm.controls["role_id"].setValue(data.role_id)
+  //   this.userdetailsForm.controls["first_name"].setValue(data.first_name)
+  //   this.userdetailsForm.controls["last_name"].setValue(data.last_name)
+  //   this.userdetailsForm.controls["email"].setValue(data.email)
+  //   this.userdetailsForm.controls["phone_code"].setValue(data.phone_code)
+  //   this.userdetailsForm.controls["phone"].setValue(data.phone)
+  //   this.userdetailsForm.controls["password"].setValue(data.password)
+  //   this.userdetailsObj.id = data.id;
 
-    // }
+  // }
 
-    // updateUser() {
-    //   this.submitted = true;
+  // updateUser() {
+  //   this.submitted = true;
 
-    //   this.userdetailsObj.role_id = this.userdetailsForm.value.role_id;
-    //   this.userdetailsObj.first_name = this.userdetailsForm.value.first_name;
-    //   this.userdetailsObj.last_name = this.userdetailsForm.value.last_name;
-    //   this.userdetailsObj.email = this.userdetailsForm.value.email;
-    //   this.userdetailsObj.phone_code = this.userdetailsForm.value.phone_code;
-    //   this.userdetailsObj.phone = this.userdetailsForm.value.phone;
+  //   this.userdetailsObj.role_id = this.userdetailsForm.value.role_id;
+  //   this.userdetailsObj.first_name = this.userdetailsForm.value.first_name;
+  //   this.userdetailsObj.last_name = this.userdetailsForm.value.last_name;
+  //   this.userdetailsObj.email = this.userdetailsForm.value.email;
+  //   this.userdetailsObj.phone_code = this.userdetailsForm.value.phone_code;
+  //   this.userdetailsObj.phone = this.userdetailsForm.value.phone;
 
-    //   this.authentication.putEditUser(this.userdetailsObj, this.userdetailsObj.id).subscribe((res) => {
-    //     console.log(res);
-    //     if (res.message == "Updated") {
-    //       alert("User Details updated successfully")
-    //       this.getUser();
+  //   this.authentication.putEditUser(this.userdetailsObj, this.userdetailsObj.id).subscribe((res) => {
+  //     console.log(res);
+  //     if (res.message == "Updated") {
+  //       alert("User Details updated successfully")
+  //       this.getUser();
 
-    //     }
-    //   })
-
-
-    // }
+  //     }
+  //   })
 
 
+  // }
 
-    deleteDetails(data: any) {
-      this.dailog.open({text:'Are you sure you want to delete?'})
-      .subscribe((result:DialogResponse)=>{
-        
-          if(result.status==true){ 
-            this.authentication.deleteDeleteUser(data.id).subscribe((res) => {
-             console.log(res);
+
+
+  deleteDetails(data: any) {
+    this.dailog.open({ text: 'Are you sure you want to delete?' })
+      .subscribe((result: DialogResponse) => {
+
+        if (result.status == true) {
+          this.authentication.deleteDeleteUser(data.id).subscribe((res) => {
+            console.log(res);
             if (res.message == "Deleted") {
               this.toast.info("User details deleted successfully")
               this.getUser();
-            }}, (err) => {
-              this.toast.error("Error" + err)
-            })}
-       
-    })}
+            }
+          }, (err) => {
+            this.toast.error("Error" + err)
+          })
+        }
 
-    logoutUser(){
-      this.toast.info("signout successfully")
-      this.router.navigateByUrl('/login')
-    }
-
-
+      })
   }
+
+  logoutUser() {
+    this.toast.info("signout successfully")
+    this.router.navigateByUrl('/login')
+  }
+
+
+}
 
 

@@ -28,6 +28,7 @@ const routes: Routes = [
   {path:'cms-management-list', component:CmsManagementListComponent},
   {path:'cms-details/:id', component:CmsDetailsComponent},
   {path:'cms-details', component:CmsDetailsComponent},
+  {path:'cms-management-list/:id', component:CmsManagementListComponent},
   
 
 ]

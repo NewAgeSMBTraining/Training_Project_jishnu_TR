@@ -51,8 +51,8 @@
 
                                         <a [routerLink]="['/cms-details', item?.id]"><button class="btn btn-light"
                                                 style="margin: 5px;">Edit</button></a>
-                                        <!-- <a [routerLink]="['/cms-management-list', item?.id]"><button
-                                                class="btn btn-light" style="margin: 5px;">Delete</button></a> -->
+                                        <a [routerLink]="['/cms-management-list', item?.id]"><button
+                                                class="btn btn-light" (click)="deleteDetails(item)" style="margin: 5px;">Delete</button></a>
 
 
                                     </td>

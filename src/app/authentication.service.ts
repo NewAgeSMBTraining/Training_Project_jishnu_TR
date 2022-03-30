@@ -244,6 +244,14 @@ export class AuthenticationService {
   
   }
 
+  deleteCMSdata(id: number) {
+    return this.httpclient.delete<any>("http://web.newagesme.com:3636/page/"+id, {headers:this.header}).pipe(
+      map(
+        (res) => {
+          return res
+        }))
+  }
+
   
 
   
