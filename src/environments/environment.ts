@@ -7,7 +7,14 @@ export const environment = {
   DATE_FORMAT: 'MM/dd/yyyy',
   DATE_TIME_FORMAT: 'MM/dd/yyyy hh:mm a',
   PAGINATION_LIMIT: 6,
+  S3_BUCKET_NAME: 'bucket-name',
+  S3_USERNAME: '',
+  S3_PASSWORD: '',
+  S3_ACCESS_KEY_ID: '',
+  S3_SECRET_ACCESS_KEY_ID: '',
+  S3_REGION: 'us-east-1',
   S3_FULL_URL: 'https://<bucket-name>.s3.amazonaws.com/',
+  
   // API_ENDPOINT: 'http://web.newagesme.com:3636/user/',
 };
 
