@@ -74,6 +74,7 @@ export interface ApiResponse {
     email?:string;
     phone_code?:string;
     phone?:string;
+    image?: any;
   }
 
 

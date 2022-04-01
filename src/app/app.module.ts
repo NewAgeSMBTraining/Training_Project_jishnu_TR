@@ -33,6 +33,10 @@ import { TemplateDetailsComponent } from './components/template-details/template
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { CmsManagementListComponent } from './components/cms-management-list/cms-management-list.component';
 import { CmsDetailsComponent } from './components/cms-details/cms-details.component';
+import { AngularFileUploaderModule } from 'angular-file-uploader';
+import {ImageCropperModule} from 'ngx-image-cropper';
+import { CropperComponent } from './components/cropper/cropper.component';
+import { NbIconModule } from '@nebular/theme';
 
 
 
@@ -64,6 +68,7 @@ import { CmsDetailsComponent } from './components/cms-details/cms-details.compon
     TemplateDetailsComponent,
     CmsManagementListComponent,
     CmsDetailsComponent,
+    CropperComponent,
     
     
     
@@ -77,7 +82,9 @@ import { CmsDetailsComponent } from './components/cms-details/cms-details.compon
     NbToastrModule.forRoot(),
     NbDialogModule.forRoot(),
     NbCardModule,NbLayoutModule,
-    AngularEditorModule,NbCheckboxModule
+    AngularEditorModule,NbCheckboxModule,
+    AngularFileUploaderModule,
+    ImageCropperModule,NbIconModule
     
     
     

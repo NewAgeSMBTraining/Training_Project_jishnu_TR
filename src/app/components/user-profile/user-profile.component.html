@@ -17,7 +17,9 @@
                 <div class="mt-8 p-5 alert alert-success rounded">
                     <div class="container text-center">
                         <h1>User Profile</h1>
-                        <img src="assets\images\user (1).png" alt="Cinque Terre" width="150" height="150">
+                        <!-- <p><img [src]="url" *ngIf="url" [attr.width]="'50px'" [attr.height]="'50px'"></p> -->
+                        <p><img src="{{loggedUserData.image}}" [attr.width]="'100px'" [attr.height]="'100px'"></p>
+
                         <!-- </div>
 
                 </div> -->
@@ -54,8 +56,11 @@
                                         <p><strong>Role Id : </strong> {{loggedUserData.role_id}} </p>
                                         <p><strong>Email : </strong> {{loggedUserData.email}} </p>
                                         <p><strong>Mobile : </strong> {{loggedUserData.phone}} </p>
+                                        <!-- <p><strong>Profile Image : </strong><img [src]="url" *ngIf="url" [attr.width]="'70px'" [attr.height]="'70px'"></p> -->
+
+
                                     </div>
-                                    <div class="col-xs-12 col-sm-4 text-center">
+                                    <!-- <div class="col-xs-12 col-sm-4 text-center">
                                         <figure>
                                             <img src="C:\Users\Jishnu\Pictures\Screenshots/Screenshots(177).png" alt=""
                                                 class="img-circle img-responsive">
@@ -64,7 +69,7 @@
 
                                             </figcaption>
                                         </figure>
-                                    </div>
+                                    </div> -->
                                 </div>
 
 
@@ -202,6 +207,31 @@
                                                                 </div>
                                                             </div>
 
+                                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+
+                                                            </div>
+
+                                                            <div class="mb-3">
+                                                                <label for="usr" style="margin: 15px;"
+                                                                    class=" form-label-custom">Profile Image
+                                                                    <span class="required-star">*</span></label>
+                                                                <input type="file" class="form-control"
+                                                                    (change)="selectFile($event)" id="yu"
+                                                                    formControlName="image">
+
+
+                                                                <button class="btn btn-success" style="margin: 15px;"
+                                                                    type="button" [disabled]="!selectedFiles"
+                                                                    (click)="upload()">Upload
+                                                                </button>
+                                                            </div>
+
+
+
+                                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+
+                                                            </div>
+
 
 
                                                         </div>
@@ -246,7 +276,3 @@
         </div>
     </div>
 </footer>
-
-
-
-

@@ -1,0 +1,13 @@
+<img class="user" *ngIf="image" [src]="croppedImage " alt="image" />
+<img class="user" *ngIf="!image" src="assets/images/no-image-user.png" alt="image" />
+<label for="user-file" class="edit_pr">
+  <nb-icon nbPrefix icon="edit-2-outline" pack="eva"></nb-icon>
+  <input class="d-none" #userFile accept="image/*" id="user-file" (change)="fileChangeEvent($event)" type="file">
+</label>
+<div class="cropper-block" [hidden]="!showCropper">
+  <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1/1"
+  [resizeToWidth]="128" format="png" (imageCropped)="imageCropped($event)" (loadImageFailed)="loadImageFailed()">
+  </image-cropper>
+  <button type="button" class="btn btn-primary mt-2 mb-1 w-100" (click)="cropperSave()">Crop</button>
+  <button type="button" class="btn btn-dark w-100" (click)="cropperCancel()">Cancel</button>
+</div>
