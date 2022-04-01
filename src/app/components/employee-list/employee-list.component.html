@@ -8,6 +8,14 @@
       <li class="nav-item">
         <a class="nav-link active" aria-current="page" (click)="logoutUser()" routerLinkActive="active">Logout</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" [routerLink]="['/cms-management-list']"
+          routerLinkActive="active">CMS List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" [routerLink]="['/email-template-list']"
+          routerLinkActive="active">Email Template List</a>
+      </li>
     </ul>
   </div>
 </nav>
