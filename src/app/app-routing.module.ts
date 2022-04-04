@@ -9,6 +9,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { LoginComponent } from './components/login/login.component';
 import { OtpVerificationComponent } from './components/otp-verification/otp-verification.component';
 import { ReserPasswordComponent } from './components/reser-password/reser-password.component';
+import { SettingsComponent } from './components/settings/settings.component';
 import { TemplateDetailsComponent } from './components/template-details/template-details.component';
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
@@ -29,6 +30,8 @@ const routes: Routes = [
   {path:'cms-details/:id', component:CmsDetailsComponent},
   {path:'cms-details', component:CmsDetailsComponent},
   {path:'cms-management-list/:id', component:CmsManagementListComponent},
+  {path:'settings', component:SettingsComponent},
+  {path:'settings/:id', component:SettingsComponent},
   
 
 ]

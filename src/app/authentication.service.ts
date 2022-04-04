@@ -252,6 +252,16 @@ export class AuthenticationService {
         }))
   }
 
+  getSettingsList(){
+    return this.httpclient.get<any>("http://web.newagesme.com:3636/setting",{headers:this.header}).pipe(
+      map((res)=>{
+        return res
+      })
+    )
+  }
+
+  
+
   
 
   

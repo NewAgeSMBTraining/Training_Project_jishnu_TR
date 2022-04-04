@@ -37,6 +37,7 @@ import { AngularFileUploaderModule } from 'angular-file-uploader';
 import {ImageCropperModule} from 'ngx-image-cropper';
 import { CropperComponent } from './components/cropper/cropper.component';
 import { NbIconModule } from '@nebular/theme';
+import { SettingsComponent } from './components/settings/settings.component';
 
 
 
@@ -69,6 +70,7 @@ import { NbIconModule } from '@nebular/theme';
     CmsManagementListComponent,
     CmsDetailsComponent,
     CropperComponent,
+    SettingsComponent,
     
     
     
